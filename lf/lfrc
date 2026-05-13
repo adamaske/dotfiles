@@ -1,0 +1,116 @@
+# ─────────────────────────────────────────────
+#  lf config  (~/.config/lf/lfrc)
+#  Theme: Catppuccin Mocha
+# ─────────────────────────────────────────────
+
+# ── General settings ──────────────────────────
+set icons true
+set hidden false
+set ignorecase true
+set filesep " "
+set scrolloff 4
+set period 2
+set ratios 1:2:3
+set info size:time
+set dircounts true
+set dirfirst true
+
+# ── Borders & UI (Catppuccin Mocha) ───────────
+set drawbox true
+
+# ANSI color reference used below:
+#   Mocha Lavender  = #b4befe → \033[38;2;180;190;254m
+#   Mocha Surface0  = #313244 → \033[38;2;49;50;68m
+#   Mocha Surface1  = #45475a → \033[38;2;69;71;90m
+#   Mocha Blue      = #89b4fa → \033[38;2;137;180;250m
+#   Mocha Green     = #a6e3a1 → \033[38;2;166;227;161m
+#   Mocha Red       = #f38ba8 → \033[38;2;243;139;168m
+#   Mocha Yellow    = #f9e2af → \033[38;2;249;226;175m
+#   Mocha Peach     = #fab387 → \033[38;2;250;179;135m
+#   Mocha Text      = #cdd6f4 → \033[38;2;205;214;244m
+#   Mocha Subtext0  = #a6adc8 → \033[38;2;166;173;200m
+#   bg Mantle       = #181825 → \033[48;2;24;24;37m
+#   bg Surface0     = #313244 → \033[48;2;49;50;68m
+
+# Border color — Mocha Lavender
+set borderfmt "\033[38;2;180;190;254m"
+
+# Cursor in active pane — bold + Mocha Surface0 bg
+set cursoractivefmt "\033[1;38;2;205;214;244m\033[48;2;49;50;68m"
+
+# Cursor in parent pane — dimmed
+set cursorparentfmt "\033[38;2;166;173;200m\033[48;2;24;24;37m"
+
+# Cursor in preview pane — underline only
+set cursorpreviewfmt "\033[4;38;2;166;173;200m"
+
+# Copied files — yellow bg tint
+set copyfmt "\033[38;2;249;226;175m\033[48;2;49;50;68m"
+
+# Cut files — red tint
+set cutfmt "\033[38;2;243;139;168m\033[48;2;49;50;68m"
+
+# Error messages — red on light bg
+set errorfmt "\033[1;38;2;243;139;168m"
+
+# ── cd-on-quit ────────────────────────────────
+# Handled by -last-dir-path in PowerShell wrapper (no hook needed)
+
+# ── Reload config ─────────────────────────────
+map <f5> source "~/.config/lf/lfrc"
+
+# ── Navigation helpers ────────────────────────
+map <backspace2> set hidden!
+map gz cd ~
+
+# ── Rename ────────────────────────────────────
+map r push :rename<space>
+map R ${{
+    old=$(mktemp)
+    new=$(mktemp)
+    printf '%s\n' $fx > "$old"
+    cp "$old" "$new"
+    ${EDITOR:-nvim} "$new"
+    paste "$old" "$new" | while IFS=$'\t' read src dst; do
+        [ "$src" != "$dst" ] && mv -i -- "$src" "$dst"
+    done
+    rm "$old" "$new"
+}}
+
+# ── Create files and directories ──────────────
+map a ${ $name = Read-Host "File name"; if ($name) { New-Item -ItemType File $name } }
+map A ${ $name = Read-Host "Directory name"; if ($name) { New-Item -ItemType Directory $name } }
+
+# ── Open Explorer in current directory ────────
+map S &explorer .
+
+# ── Copy path to clipboard ────────────────────
+map Y ${ echo $fx | Set-Clipboard }
+map yp ${ echo $PWD | Set-Clipboard }
+
+# ── Open in editor ────────────────────────────
+map V &nvim-qt $f
+
+# ── Archive management (7-Zip) ────────────────
+cmd zip ${{
+    $name = Read-Host "Archive name (without .7z)"
+    if ($name) { 7z a "$name.7z" $fx }
+}}
+cmd extract_here ${ 7z x $f }
+cmd extract_to ${{
+    $dest = Read-Host "Extract to directory"
+    if ($dest) { 7z x $f -o"$dest" }
+}}
+
+map <c-z> ${ 7z x $f }
+map <c-a> push :zip<enter>
+
+# ── Trash instead of delete ───────────────────
+cmd trash ${{
+    try {
+        Remove-ItemSafely $fx
+    } catch {
+        Remove-Item -Recurse -Force $fx
+    }
+}}
+map <delete> trash

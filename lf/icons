@@ -1,0 +1,87 @@
+# ─────────────────────────────────────────────
+#  lf icons file  (~/.config/lf/icons)
+#  Requires a Nerd Font (e.g. JetBrainsMono Nerd Font)
+#  Get one at: https://www.nerdfonts.com/
+# ─────────────────────────────────────────────
+
+# ── File type defaults ────────────────────────
+di 
+ln 
+or 
+ex 
+fi 
+
+# ── Special directories ───────────────────────
+*.git           
+*node_modules   
+*.config        
+
+# ── Source code ───────────────────────────────
+*.py        
+*.js        
+*.ts        
+*.jsx       
+*.tsx       
+*.go        
+*.rs        
+*.c         
+*.cpp       
+*.h         
+*.cs        
+*.lua       
+*.vim       
+*.sh        
+*.ps1       
+*.bat       
+*.cmd       
+
+# ── Data / config ─────────────────────────────
+*.json      
+*.yaml      
+*.yml       
+*.toml      
+*.xml       
+*.csv       
+*.env       
+*.ini       
+*.conf      
+
+# ── Docs ──────────────────────────────────────
+*.md        
+*.txt       
+*.pdf       
+*.doc       
+*.docx      
+*.xls       
+*.xlsx      
+*.ppt       
+*.pptx      
+
+# ── Media ─────────────────────────────────────
+*.png       
+*.jpg       
+*.jpeg      
+*.gif       
+*.webp      
+*.svg       
+*.mp4       
+*.mkv       
+*.mov       
+*.mp3       
+*.flac      
+*.wav       
+
+# ── Archives ──────────────────────────────────
+*.zip       
+*.7z        
+*.tar       
+*.gz        
+*.rar       
+
+# ── Special files ─────────────────────────────
+*Makefile       
+*Dockerfile     
+*.gitignore     
+*LICENSE        
+*README.md      
+*README         
