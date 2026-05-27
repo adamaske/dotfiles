@@ -66,9 +66,9 @@ config.keys = {
   { key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
 
   -- Splits
-  --   C-a |   split right
+  --   C-a \   split right
   --   C-a -   split down
-  { key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+  { key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
   -- Pane focus  (C-a h/j/k/l  or  C-a arrows)

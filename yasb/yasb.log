@@ -1465,3 +1465,24 @@ Current thread's C stack trace (most recent call first):
 2026-05-27 14:45:26,115 [INFO] [Dummy-7] [root/event_listener.py:54]: Created named pipe yasb-ef2bf6b6-59c9-11f1-8a5c-244bfee15e36
 2026-05-27 14:45:26,431 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
 2026-05-27 14:45:26,432 [WARNING] [Dummy-7] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+2026-05-27 16:13:13,148 [INFO] [MainThread] [root/log.py:104]: YASB v2.0.0
+2026-05-27 16:13:13,149 [INFO] [CLIPipeServer] [cli_server/cli_server.py:216]: CLI server started v1.1.7
+2026-05-27 16:13:13,149 [INFO] [MainThread] [cli_server/cli_server.py:106]: Log pipe server started
+2026-05-27 16:13:13,275 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarAlignment: 'center' - Use 'align' instead.
+2026-05-27 16:13:13,275 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarBlurEffect: 'acrylic' - No longer supported and can be removed from the config.
+2026-05-27 16:13:13,459 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MediaWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-27 16:13:13,798 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] ApplicationsWidgetConfig: 'container_padding' - Use CSS padding instead.
+2026-05-27 16:13:13,842 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'container_padding' - Use CSS padding instead.
+2026-05-27 16:13:13,843 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-27 16:13:13,845 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MemoryConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-27 16:13:13,846 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] TrafficWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-27 16:13:13,875 [INFO] [MainThread] [root/service.py:52]: AudioOutputService starting...
+2026-05-27 16:13:13,906 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MicrophoneConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-27 16:13:13,919 [INFO] [MainThread] [root/service.py:41]: AudioInputService starting...
+2026-05-27 16:13:14,439 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:196]: TaskbarWindowManager is starting...
+2026-05-27 16:13:14,592 [INFO] [MainThread] [root/bar_manager.py:102]: Starting KomorebiEventListener...
+2026-05-27 16:13:14,594 [INFO] [MainThread] [root/watcher.py:65]: Watching directory: c:\users\adama\.config\yasb
+2026-05-27 16:13:14,594 [INFO] [MainThread] [root/watcher.py:104]: Created file watcher
+2026-05-27 16:13:14,594 [INFO] [Dummy-7] [root/event_listener.py:54]: Created named pipe yasb-336e2e4e-59d6-11f1-b563-244bfee15e36
+2026-05-27 16:13:14,891 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
+2026-05-27 16:13:14,892 [WARNING] [Dummy-7] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
