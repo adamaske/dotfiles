@@ -1,16 +1,15 @@
 return {
 
 	{
-		"Mofiqul/vscode.nvim",
+		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("vscode").setup({
-				transparent = true,
-				italic_comments = true,
-				disable_nvimtree_bg = true,
-			})
-			require("vscode").load()
+			vim.g.gruvbox_material_background = "hard"
+			vim.g.gruvbox_material_palette = "original"
+			vim.g.gruvbox_material_enable_italic = true
+			vim.g.gruvbox_material_transparent_background = 1
+			vim.cmd("colorscheme gruvbox-material")
 		end,
 	}, -- File explorer
 	{

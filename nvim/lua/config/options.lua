@@ -47,3 +47,10 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
 opt.updatetime = 250
 
 opt.ruler = true
+
+-- Suppress rustaceanvim's client.request deprecation warning (Neovim 0.11 API change)
+local _deprecate = vim.deprecate
+vim.deprecate = function(name, alt, version, plugin, backtrace)
+	if name == "client.request" then return end
+	_deprecate(name, alt, version, plugin, backtrace)
+end
