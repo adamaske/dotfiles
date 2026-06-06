@@ -48,9 +48,9 @@ opt.updatetime = 250
 
 opt.ruler = true
 
--- Suppress rustaceanvim's client.request deprecation warning (Neovim 0.11 API change)
+-- Suppress all deprecation warnings originating from rustaceanvim (Neovim 0.11 API lag)
 local _deprecate = vim.deprecate
 vim.deprecate = function(name, alt, version, plugin, backtrace)
-	if name == "client.request" then return end
+	if debug.traceback():find("rustaceanvim", 1, true) then return end
 	_deprecate(name, alt, version, plugin, backtrace)
 end

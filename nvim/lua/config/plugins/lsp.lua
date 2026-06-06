@@ -28,8 +28,20 @@ return {
 				"html", -- HTML
 				"cssls", -- CSS
 				"jsonls", -- JSON
+				"pyright", -- Python LSP
 			},
 			automatic_installation = true,
+		},
+	},
+
+	-- Auto-install non-LSP Mason tools (formatters, linters)
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		opts = {
+			ensure_installed = {
+				"ruff", -- Python formatter + linter
+			},
 		},
 	},
 

@@ -18,6 +18,7 @@ return {
           "markdown",
           "markdown_inline",
           "bash",
+          "python",
         },
         auto_install = true,
         highlight = { enable = true },
