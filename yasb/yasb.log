@@ -1486,3 +1486,508 @@ Current thread's C stack trace (most recent call first):
 2026-05-27 16:13:14,594 [INFO] [Dummy-7] [root/event_listener.py:54]: Created named pipe yasb-336e2e4e-59d6-11f1-b563-244bfee15e36
 2026-05-27 16:13:14,891 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
 2026-05-27 16:13:14,892 [WARNING] [Dummy-7] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+2026-05-27 23:44:53,621 [INFO] [MainThread] [root/controller.py:43]: Exiting Application...
+2026-05-27 23:44:53,723 [INFO] [MainThread] [cli_server/cli_server.py:114]: Log pipe server stopped
+2026-05-27 23:44:53,996 [INFO] [MainThread] [root/bar_manager.py:118]: Stopping KomorebiEventListener...
+2026-05-27 23:44:53,998 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:223]: TaskbarWindowManager stopped
+2026-05-28 13:31:18,225 [INFO] [MainThread] [root/log.py:104]: YASB v2.0.0
+2026-05-28 13:31:18,227 [INFO] [CLIPipeServer] [cli_server/cli_server.py:216]: CLI server started v1.1.7
+2026-05-28 13:31:18,227 [INFO] [MainThread] [cli_server/cli_server.py:106]: Log pipe server started
+2026-05-28 13:31:18,314 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarAlignment: 'center' - Use 'align' instead.
+2026-05-28 13:31:18,314 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarBlurEffect: 'acrylic' - No longer supported and can be removed from the config.
+2026-05-28 13:31:18,517 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MediaWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-28 13:31:18,874 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] ApplicationsWidgetConfig: 'container_padding' - Use CSS padding instead.
+2026-05-28 13:31:18,916 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'container_padding' - Use CSS padding instead.
+2026-05-28 13:31:18,916 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-28 13:31:18,919 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MemoryConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-28 13:31:18,920 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] TrafficWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-28 13:31:18,949 [INFO] [MainThread] [root/service.py:52]: AudioOutputService starting...
+2026-05-28 13:31:18,980 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MicrophoneConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-28 13:31:18,991 [INFO] [MainThread] [root/service.py:41]: AudioInputService starting...
+2026-05-28 13:31:19,314 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:196]: TaskbarWindowManager is starting...
+2026-05-28 13:31:19,404 [INFO] [MainThread] [root/bar_manager.py:102]: Starting KomorebiEventListener...
+2026-05-28 13:31:19,405 [INFO] [Dummy-5] [root/event_listener.py:54]: Created named pipe yasb-bf23e09f-5a88-11f1-8222-244bfee15e36
+2026-05-28 13:31:19,407 [INFO] [MainThread] [root/watcher.py:65]: Watching directory: c:\users\adama\.config\yasb
+2026-05-28 13:31:19,407 [INFO] [MainThread] [root/watcher.py:104]: Created file watcher
+2026-05-28 13:31:19,432 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
+2026-05-28 13:31:19,464 [WARNING] [Dummy-5] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+2026-05-31 02:48:52,668 [INFO] [MainThread] [root/controller.py:43]: Exiting Application...
+2026-05-31 02:48:52,770 [INFO] [MainThread] [cli_server/cli_server.py:114]: Log pipe server stopped
+2026-05-31 02:48:53,026 [INFO] [MainThread] [root/bar_manager.py:118]: Stopping KomorebiEventListener...
+2026-05-31 02:48:53,030 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:223]: TaskbarWindowManager stopped
+2026-05-31 21:08:42,032 [INFO] [MainThread] [root/log.py:104]: YASB v2.0.0
+2026-05-31 21:08:42,033 [INFO] [CLIPipeServer] [cli_server/cli_server.py:216]: CLI server started v1.1.7
+2026-05-31 21:08:42,033 [INFO] [MainThread] [cli_server/cli_server.py:106]: Log pipe server started
+2026-05-31 21:08:42,198 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarAlignment: 'center' - Use 'align' instead.
+2026-05-31 21:08:42,198 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarBlurEffect: 'acrylic' - No longer supported and can be removed from the config.
+2026-05-31 21:08:42,439 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MediaWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-31 21:08:42,829 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] ApplicationsWidgetConfig: 'container_padding' - Use CSS padding instead.
+2026-05-31 21:08:42,873 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'container_padding' - Use CSS padding instead.
+2026-05-31 21:08:42,873 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-31 21:08:42,877 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MemoryConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-31 21:08:42,878 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] TrafficWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-31 21:08:42,908 [INFO] [MainThread] [root/service.py:52]: AudioOutputService starting...
+2026-05-31 21:08:42,944 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MicrophoneConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-05-31 21:08:42,957 [INFO] [MainThread] [root/service.py:41]: AudioInputService starting...
+2026-05-31 21:08:43,344 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:196]: TaskbarWindowManager is starting...
+2026-05-31 21:08:43,441 [INFO] [MainThread] [root/bar_manager.py:102]: Starting KomorebiEventListener...
+2026-05-31 21:08:43,443 [INFO] [Dummy-6] [root/event_listener.py:54]: Created named pipe yasb-244ccca3-5d24-11f1-91e9-244bfee15e36
+2026-05-31 21:08:43,443 [INFO] [MainThread] [root/watcher.py:65]: Watching directory: c:\users\adama\.config\yasb
+2026-05-31 21:08:43,443 [INFO] [MainThread] [root/watcher.py:104]: Created file watcher
+2026-05-31 21:08:43,738 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
+2026-05-31 21:08:43,738 [WARNING] [Dummy-6] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+2026-06-01 02:53:34,800 [INFO] [MainThread] [root/controller.py:43]: Exiting Application...
+2026-06-01 02:53:34,902 [INFO] [MainThread] [cli_server/cli_server.py:114]: Log pipe server stopped
+2026-06-01 02:53:35,174 [INFO] [MainThread] [root/bar_manager.py:118]: Stopping KomorebiEventListener...
+2026-06-01 02:53:35,176 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:223]: TaskbarWindowManager stopped
+2026-06-02 13:09:35,058 [INFO] [MainThread] [root/log.py:104]: YASB v2.0.0
+2026-06-02 13:09:35,059 [INFO] [CLIPipeServer] [cli_server/cli_server.py:216]: CLI server started v1.1.7
+2026-06-02 13:09:35,060 [INFO] [MainThread] [cli_server/cli_server.py:106]: Log pipe server started
+2026-06-02 13:09:35,254 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarAlignment: 'center' - Use 'align' instead.
+2026-06-02 13:09:35,254 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarBlurEffect: 'acrylic' - No longer supported and can be removed from the config.
+2026-06-02 13:09:35,570 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MediaWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 13:09:36,037 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] ApplicationsWidgetConfig: 'container_padding' - Use CSS padding instead.
+2026-06-02 13:09:36,087 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'container_padding' - Use CSS padding instead.
+2026-06-02 13:09:36,087 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 13:09:36,090 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MemoryConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 13:09:36,091 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] TrafficWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 13:09:36,124 [INFO] [MainThread] [root/service.py:52]: AudioOutputService starting...
+2026-06-02 13:09:36,165 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MicrophoneConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 13:09:36,178 [INFO] [MainThread] [root/service.py:41]: AudioInputService starting...
+2026-06-02 13:09:36,614 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:196]: TaskbarWindowManager is starting...
+2026-06-02 13:09:36,743 [INFO] [MainThread] [root/bar_manager.py:102]: Starting KomorebiEventListener...
+2026-06-02 13:09:36,744 [INFO] [Dummy-5] [root/event_listener.py:54]: Created named pipe yasb-8ac24cd1-5e73-11f1-bfa1-244bfee15e36
+2026-06-02 13:09:36,745 [INFO] [MainThread] [root/watcher.py:65]: Watching directory: c:\users\adama\.config\yasb
+2026-06-02 13:09:36,745 [INFO] [MainThread] [root/watcher.py:104]: Created file watcher
+2026-06-02 13:09:37,043 [WARNING] [Dummy-5] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+2026-06-02 13:09:37,043 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
+Windows fatal exception: code 0x8001010e
+
+Thread 0x00002ea4 [SystrayMonitor] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\utils.py", line 145 in start_message_loop
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\systray_monitor.py", line 99 in run
+  File "D:\a\yasb\yasb\src\core\widgets\yasb\systray.py", line 65 in run
+
+Thread 0x00001d10 [Thread-6] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 369 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\queue.py", line 199 in get
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 379 in dispatch_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 213 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x0000533c [Thread-7] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 326 in read_directory_changes
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 380 in read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 67 in _read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 70 in queue_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 158 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x0000403c [KomorebiEventListener] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 373 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 670 in wait
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 139 in _wait_until_komorebi_online
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 69 in run
+
+Thread 0x00002028 [MemoryWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\memory\memory_api.py", line 244 in run
+
+Thread 0x000050c0 [GpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\gpu\gpu_api.py", line 530 in run
+
+Thread 0x00002ce0 [CpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\cpu\cpu_api.py", line 318 in run
+
+Thread 0x00004698 [_EventWorker] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 147 in _poll
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 72 in select
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 199 in run
+
+Thread 0x00001d00 [LogPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 138 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00003e48 [CLIPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 235 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Current thread 0x00003094 (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\asyncio\events.py", line 94 in _run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 307 in timerEvent
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 404 in run_forever
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 428 in run_until_complete
+  File "main.py", line 98 in main
+  File "main.py", line 188 in <module>
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\console.py", line 27 in run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\__startup__.py", line 137 in run
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+Windows fatal exception: code 0xc0000374
+
+Thread 0x000052e8 (most recent call first):
+  <no Python frame>
+
+Thread 0x00002ea4 [SystrayMonitor] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\utils.py", line 145 in start_message_loop
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\systray_monitor.py", line 99 in run
+  File "D:\a\yasb\yasb\src\core\widgets\yasb\systray.py", line 65 in run
+
+Thread 0x00001d10 [Thread-6] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 369 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\queue.py", line 199 in get
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 379 in dispatch_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 213 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x0000533c [Thread-7] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 326 in read_directory_changes
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 380 in read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 67 in _read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 70 in queue_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 158 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x0000403c [KomorebiEventListener] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 373 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 670 in wait
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 139 in _wait_until_komorebi_online
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 69 in run
+
+Thread 0x00002028 [MemoryWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\memory\memory_api.py", line 244 in run
+
+Thread 0x000050c0 [GpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\gpu\gpu_api.py", line 530 in run
+
+Thread 0x00002ce0 [CpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\cpu\cpu_api.py", line 318 in run
+
+Thread 0x00004698 [_EventWorker] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 147 in _poll
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 72 in select
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 199 in run
+
+Thread 0x00001d00 [LogPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 138 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00003e48 [CLIPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 235 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Current thread 0x00003094 (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\asyncio\events.py", line 94 in _run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 307 in timerEvent
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 404 in run_forever
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 428 in run_until_complete
+  File "main.py", line 98 in main
+  File "main.py", line 188 in <module>
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\console.py", line 27 in run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\__startup__.py", line 137 in run
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+2026-06-02 22:54:42,591 [INFO] [MainThread] [root/log.py:104]: YASB v2.0.0
+2026-06-02 22:54:42,592 [INFO] [CLIPipeServer] [cli_server/cli_server.py:216]: CLI server started v1.1.7
+2026-06-02 22:54:42,592 [INFO] [MainThread] [cli_server/cli_server.py:106]: Log pipe server started
+2026-06-02 22:54:42,727 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarAlignment: 'center' - Use 'align' instead.
+2026-06-02 22:54:42,728 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarBlurEffect: 'acrylic' - No longer supported and can be removed from the config.
+2026-06-02 22:54:42,927 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MediaWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 22:54:43,280 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] ApplicationsWidgetConfig: 'container_padding' - Use CSS padding instead.
+2026-06-02 22:54:43,325 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'container_padding' - Use CSS padding instead.
+2026-06-02 22:54:43,325 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 22:54:43,328 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MemoryConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 22:54:43,329 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] TrafficWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 22:54:43,359 [INFO] [MainThread] [root/service.py:52]: AudioOutputService starting...
+2026-06-02 22:54:43,389 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MicrophoneConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-02 22:54:43,402 [INFO] [MainThread] [root/service.py:41]: AudioInputService starting...
+2026-06-02 22:54:43,940 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:196]: TaskbarWindowManager is starting...
+2026-06-02 22:54:44,058 [INFO] [MainThread] [root/bar_manager.py:102]: Starting KomorebiEventListener...
+2026-06-02 22:54:44,060 [INFO] [Dummy-6] [root/event_listener.py:54]: Created named pipe yasb-48598b76-5ec5-11f1-9f06-244bfee15e36
+2026-06-02 22:54:44,060 [INFO] [MainThread] [root/watcher.py:65]: Watching directory: c:\users\adama\.config\yasb
+2026-06-02 22:54:44,061 [INFO] [MainThread] [root/watcher.py:104]: Created file watcher
+2026-06-02 22:54:44,367 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
+2026-06-02 22:54:44,368 [WARNING] [Dummy-6] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+2026-06-03 03:21:34,756 [INFO] [MainThread] [root/controller.py:43]: Exiting Application...
+2026-06-03 03:21:34,857 [INFO] [MainThread] [cli_server/cli_server.py:114]: Log pipe server stopped
+2026-06-03 03:21:35,105 [INFO] [MainThread] [root/bar_manager.py:118]: Stopping KomorebiEventListener...
+2026-06-03 03:21:35,107 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:223]: TaskbarWindowManager stopped
+2026-06-03 12:34:02,243 [INFO] [MainThread] [root/log.py:104]: YASB v2.0.0
+2026-06-03 12:34:02,244 [INFO] [CLIPipeServer] [cli_server/cli_server.py:216]: CLI server started v1.1.7
+2026-06-03 12:34:02,245 [INFO] [MainThread] [cli_server/cli_server.py:106]: Log pipe server started
+2026-06-03 12:34:02,525 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarAlignment: 'center' - Use 'align' instead.
+2026-06-03 12:34:02,525 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarBlurEffect: 'acrylic' - No longer supported and can be removed from the config.
+2026-06-03 12:34:02,795 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MediaWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-03 12:34:03,231 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] ApplicationsWidgetConfig: 'container_padding' - Use CSS padding instead.
+2026-06-03 12:34:03,284 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'container_padding' - Use CSS padding instead.
+2026-06-03 12:34:03,284 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-03 12:34:03,289 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MemoryConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-03 12:34:03,290 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] TrafficWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-03 12:34:03,326 [INFO] [MainThread] [root/service.py:52]: AudioOutputService starting...
+2026-06-03 12:34:03,371 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MicrophoneConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-03 12:34:03,384 [INFO] [MainThread] [root/service.py:41]: AudioInputService starting...
+2026-06-03 12:34:03,786 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:196]: TaskbarWindowManager is starting...
+2026-06-03 12:34:03,951 [INFO] [MainThread] [root/bar_manager.py:102]: Starting KomorebiEventListener...
+2026-06-03 12:34:03,954 [INFO] [MainThread] [root/watcher.py:65]: Watching directory: c:\users\adama\.config\yasb
+2026-06-03 12:34:03,954 [INFO] [MainThread] [root/watcher.py:104]: Created file watcher
+2026-06-03 12:34:03,955 [INFO] [Dummy-7] [root/event_listener.py:54]: Created named pipe yasb-bdede647-5f37-11f1-99be-244bfee15e36
+2026-06-03 12:34:04,405 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
+2026-06-03 12:34:04,407 [WARNING] [Dummy-7] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+Windows fatal exception: code 0x8001010e
+
+Thread 0x00004858 [SystrayMonitor] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\utils.py", line 145 in start_message_loop
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\systray_monitor.py", line 99 in run
+  File "D:\a\yasb\yasb\src\core\widgets\yasb\systray.py", line 65 in run
+
+Thread 0x00001e4c [Thread-5] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 369 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\queue.py", line 199 in get
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 379 in dispatch_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 213 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00002804 [KomorebiEventListener] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 373 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 670 in wait
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 139 in _wait_until_komorebi_online
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 69 in run
+
+Thread 0x000050ac [Thread-6] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 326 in read_directory_changes
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 380 in read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 67 in _read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 70 in queue_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 158 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00004c94 [MemoryWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\memory\memory_api.py", line 244 in run
+
+Thread 0x0000437c [GpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\gpu\gpu_api.py", line 530 in run
+
+Thread 0x000016c0 [CpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\cpu\cpu_api.py", line 318 in run
+
+Thread 0x00001c6c [_EventWorker] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 147 in _poll
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 72 in select
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 199 in run
+
+Thread 0x000012b0 [LogPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 138 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00003d00 [CLIPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 235 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Current thread 0x000020c4 (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\asyncio\events.py", line 94 in _run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 307 in timerEvent
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 404 in run_forever
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 428 in run_until_complete
+  File "main.py", line 98 in main
+  File "main.py", line 188 in <module>
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\console.py", line 27 in run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\__startup__.py", line 137 in run
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+Windows fatal exception: code 0xc0000374
+
+Thread 0x00003498 (most recent call first):
+  <no Python frame>
+
+Thread 0x00002908 (most recent call first):
+  <no Python frame>
+
+Thread 0x00001ba0 (most recent call first):
+  <no Python frame>
+
+Thread 0x00004858 [SystrayMonitor] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\utils.py", line 145 in start_message_loop
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\systray_monitor.py", line 99 in run
+  File "D:\a\yasb\yasb\src\core\widgets\yasb\systray.py", line 65 in run
+
+Thread 0x00001e4c [Thread-5] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 369 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\queue.py", line 199 in get
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 379 in dispatch_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 213 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00002804 [KomorebiEventListener] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 373 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 670 in wait
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 139 in _wait_until_komorebi_online
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 69 in run
+
+Thread 0x000050ac [Thread-6] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 326 in read_directory_changes
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 380 in read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 67 in _read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 70 in queue_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 158 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00004c94 [MemoryWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\memory\memory_api.py", line 244 in run
+
+Thread 0x0000437c [GpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\gpu\gpu_api.py", line 530 in run
+
+Thread 0x000016c0 [CpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\cpu\cpu_api.py", line 318 in run
+
+Thread 0x00001c6c [_EventWorker] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 147 in _poll
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 72 in select
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 199 in run
+
+Thread 0x000012b0 [LogPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 138 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00003d00 [CLIPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 235 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Current thread 0x000020c4 (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\media\media.py", line 236 in _on_playback_info_changed
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\asyncio\events.py", line 94 in _run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 307 in timerEvent
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 404 in run_forever
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 428 in run_until_complete
+  File "main.py", line 98 in main
+  File "main.py", line 188 in <module>
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\console.py", line 27 in run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\__startup__.py", line 137 in run
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+2026-06-06 14:35:03,306 [INFO] [MainThread] [root/log.py:104]: YASB v2.0.0
+2026-06-06 14:35:03,307 [INFO] [CLIPipeServer] [cli_server/cli_server.py:216]: CLI server started v1.1.7
+2026-06-06 14:35:03,307 [INFO] [MainThread] [cli_server/cli_server.py:106]: Log pipe server started
+2026-06-06 14:35:03,470 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarAlignment: 'center' - Use 'align' instead.
+2026-06-06 14:35:03,470 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] BarBlurEffect: 'acrylic' - No longer supported and can be removed from the config.
+2026-06-06 14:35:03,699 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MediaWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-06 14:35:04,078 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] ApplicationsWidgetConfig: 'container_padding' - Use CSS padding instead.
+2026-06-06 14:35:04,121 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'container_padding' - Use CSS padding instead.
+2026-06-06 14:35:04,121 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] CpuConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-06 14:35:04,124 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MemoryConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-06 14:35:04,125 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] TrafficWidgetConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-06 14:35:04,160 [INFO] [MainThread] [root/service.py:52]: AudioOutputService starting...
+2026-06-06 14:35:04,192 [WARNING] [MainThread] [deprecation/deprecation.py:133]: [DEPRECATED] MicrophoneConfig: 'label_shadow' - Use CSS text-shadow instead.
+2026-06-06 14:35:04,204 [INFO] [MainThread] [root/service.py:41]: AudioInputService starting...
+2026-06-06 14:35:04,594 [INFO] [MainThread] [taskbar_window_manager/window_manager.py:196]: TaskbarWindowManager is starting...
+2026-06-06 14:35:04,683 [INFO] [MainThread] [root/bar_manager.py:102]: Starting KomorebiEventListener...
+2026-06-06 14:35:04,685 [INFO] [MainThread] [root/watcher.py:65]: Watching directory: c:\users\adama\.config\yasb
+2026-06-06 14:35:04,685 [INFO] [MainThread] [root/watcher.py:104]: Created file watcher
+2026-06-06 14:35:04,685 [INFO] [Dummy-7] [root/event_listener.py:54]: Created named pipe yasb-24e6e9f9-61a4-11f1-a70c-244bfee15e36
+2026-06-06 14:35:04,961 [INFO] [MainThread] [root/update_service.py:434]: Background update checker started
+2026-06-06 14:35:04,961 [WARNING] [Dummy-7] [root/event_listener.py:136]: Komorebi failed to subscribe named pipe. 'komorebic.exe' is not recognized as an internal or external command, operable program or batch file.
+Windows fatal exception: code 0x8001010e
+
+Thread 0x0000422c [SystrayMonitor] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\utils.py", line 145 in start_message_loop
+  File "D:\a\yasb\yasb\src\core\widgets\services\systray\systray_monitor.py", line 99 in run
+  File "D:\a\yasb\yasb\src\core\widgets\yasb\systray.py", line 65 in run
+
+Thread 0x00005268 [Thread-5] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 369 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\queue.py", line 199 in get
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 379 in dispatch_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 213 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x000015f0 [Thread-6] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 326 in read_directory_changes
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\winapi.py", line 380 in read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 67 in _read_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\read_directory_changes.py", line 70 in queue_events
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\watchdog\observers\api.py", line 158 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00003e14 [KomorebiEventListener] (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 373 in wait
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 670 in wait
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 139 in _wait_until_komorebi_online
+  File "D:\a\yasb\yasb\src\core\widgets\services\komorebi\event_listener.py", line 69 in run
+
+Thread 0x00001de4 [MemoryWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\memory\memory_api.py", line 244 in run
+
+Thread 0x00001630 [GpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\gpu\gpu_api.py", line 530 in run
+
+Thread 0x00002c84 [CpuWorker] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\widgets\services\cpu\cpu_api.py", line 318 in run
+
+Thread 0x00004118 [_EventWorker] (most recent call first):
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 147 in _poll
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 72 in select
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\_windows.py", line 199 in run
+
+Thread 0x00001e40 [LogPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 138 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Thread 0x00000e94 [CLIPipeServer] (most recent call first):
+  File "D:\a\yasb\yasb\src\core\utils\win32\bindings\kernel32.py", line 288 in ConnectNamedPipe
+  File "D:\a\yasb\yasb\src\core\utils\cli_server.py", line 235 in _run_server
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1024 in run
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1082 in _bootstrap_inner
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\threading.py", line 1044 in _bootstrap
+
+Current thread 0x00004550 (most recent call first):
+  File "C:\hostedtoolcache\windows\Python\3.14.4\x64\Lib\asyncio\events.py", line 94 in _run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 307 in timerEvent
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 404 in run_forever
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\qasync\__init__.py", line 428 in run_until_complete
+  File "main.py", line 98 in main
+  File "main.py", line 188 in <module>
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\console.py", line 27 in run
+  File "D:\a\yasb\yasb\venv\Lib\site-packages\freeze_core\initscripts\__startup__.py", line 137 in run
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>

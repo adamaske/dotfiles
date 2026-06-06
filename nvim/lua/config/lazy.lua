@@ -17,12 +17,15 @@ vim.opt.rtp:prepend(lazypath)
 -- Load lazy with our plugins folder
 require("lazy").setup("config.plugins", {
   change_detection = {
-    notify = false,   -- don't notify on config file changes
+    notify = false,
   },
   install = {
-    colorscheme = { "habamax" },  -- fallback colorscheme during install
+    colorscheme = { "habamax" },
   },
   ui = {
     border = "rounded",
+  },
+  rocks = {
+    enabled = false,
   },
 })

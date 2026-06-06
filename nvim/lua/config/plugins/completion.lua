@@ -6,7 +6,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",    -- LSP completions
       "hrsh7th/cmp-buffer",      -- words from current buffer
       "hrsh7th/cmp-path",        -- file path completions
-      "L3MON4D3/LuaSnip",        -- snippet engine
+      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
       "saadparwaiz1/cmp_luasnip", -- snippet completions
       "rafamadriz/friendly-snippets", -- collection of useful snippets
     },

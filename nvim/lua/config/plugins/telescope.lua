@@ -6,7 +6,7 @@ return {
 			"nvim-lua/plenary.nvim", -- utility library telescope needs
 			{
 				"nvim-telescope/telescope-fzf-native.nvim", -- faster fuzzy sorting
-				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -G 'MinGW Makefiles' && cmake --build build --config Release && copy build\\Release\\libfzf.dll build\\libfzf.dll",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake -E copy build/Release/libfzf.dll build/libfzf.dll",
 			},
 		},
 		cmd = "Telescope",

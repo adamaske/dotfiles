@@ -138,24 +138,79 @@ return {
 		end,
 	},
 
-	-- Polished UI for cmdline, notifications, LSP progress
+	-- LSP progress as unobtrusive corner spinners
+	{
+		"j-hui/fidget.nvim",
+		event = "LspAttach",
+		opts = {
+			progress = {
+				display = {
+					render_limit = 4,
+					done_ttl = 2,
+				},
+			},
+			notification = {
+				window = {
+					winblend = 0,
+				},
+			},
+		},
+	},
+
+	-- Notification toasts + toggleable history buffer
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			notifier = {
+				enabled = true,
+				timeout = 5000,
+				style = "fancy",
+				width = { min = 40, max = 0.5 },
+				height = { min = 1, max = 0.3 },
+			},
+			lazygit = {
+				enabled = true,
+			},
+		},
+		keys = {
+			{
+				"<leader>n",
+				function()
+					Snacks.notifier.show_history()
+				end,
+				desc = "Notification history",
+			},
+			{
+				"<leader>lg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit",
+			},
+		},
+	},
+
+	-- Polished UI for LSP markdown rendering
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify", -- notification backend
 		},
-
 		opts = {
 			cmdline = {
-				enabled = false, -- use classic cmdline
+				enabled = false,
 			},
 			messages = {
-				enabled = false, -- use classic messages (shows "written" etc)
+				enabled = false,
 			},
 			popupmenu = {
-				enabled = false, -- use classic popupmenu
+				enabled = false,
+			},
+			notify = {
+				enabled = false, -- snacks.notifier owns vim.notify
 			},
 			lsp = {
 				override = {
@@ -164,7 +219,7 @@ return {
 					["cmp.entry.get_documentation"] = true,
 				},
 				progress = {
-					enabled = true, -- LSP loading progress in corner
+					enabled = false, -- fidget handles LSP progress
 				},
 				hover = {
 					enabled = false,

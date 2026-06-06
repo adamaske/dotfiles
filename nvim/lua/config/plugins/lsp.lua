@@ -97,9 +97,9 @@ return {
 					)
 					map(
 						"n",
-						"<leader>e",
+						"<leader>xf",
 						vim.diagnostic.open_float,
-						vim.tbl_extend("force", opts, { desc = "Show diagnostic" })
+						vim.tbl_extend("force", opts, { desc = "Show diagnostic float" })
 					)
 				end,
 			})
@@ -113,40 +113,25 @@ return {
 				severity_sort = true,
 			})
 
-			-- Configure each server using the new vim.lsp.config API
-			vim.lsp.config("taplo", {})
-			vim.lsp.config("svelte", {})
-			vim.lsp.config("ts_ls", {})
-			vim.lsp.config("html", {})
-			vim.lsp.config("cssls", {})
-			vim.lsp.config("jsonls", {})
+			-- Global capabilities for all servers
+			vim.lsp.config("*", { capabilities = capabilities })
 
-			-- Enable them
-			vim.lsp.enable("taplo")
-			vim.lsp.enable("svelte")
-			vim.lsp.enable("ts_ls")
-			vim.lsp.enable("html")
-			vim.lsp.enable("cssls")
-			vim.lsp.enable("jsonls")
-			vim.lsp.enable("rust_analyzer", false)
-
-			-- Python: pyright for type checking + pylsp for deep introspection
+			-- Pyright custom analysis settings
 			vim.lsp.config("pyright", {
 				settings = {
 					python = {
 						analysis = {
-							typeCheckingMode = "basic", -- "off", "basic", or "strict"
+							typeCheckingMode = "basic",
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
-							diagnosticMode = "workspace", -- analyse whole project not just open files
+							diagnosticMode = "workspace",
 							autoImportCompletions = true,
-
-							ignore = { "*" }, -- ignore all missing import warnings
+							ignore = { "*" },
 							diagnosticSeverityOverrides = {
-								reportMissingImports = "none", -- suppress missing import errors
-								reportMissingModuleSource = "none", -- suppress missing source errors
-								reportMissingTypeStubs = "none", -- suppress missing stubs errors
-								reportUnknownMemberType = "none", -- suppress unknown member warnings
+								reportMissingImports = "none",
+								reportMissingModuleSource = "none",
+								reportMissingTypeStubs = "none",
+								reportUnknownMemberType = "none",
 								reportUnknownVariableType = "none",
 							},
 						},
@@ -154,7 +139,17 @@ return {
 				},
 			})
 
-			vim.lsp.enable("pyright")
+			-- Enable servers — nvim-lspconfig ships lsp/*.lua files that provide
+			-- the cmd/filetypes/root_markers for each one
+			vim.lsp.enable({
+				"taplo",
+				"svelte",
+				"ts_ls",
+				"html",
+				"cssls",
+				"jsonls",
+				"pyright",
+			})
 		end,
 	},
 }

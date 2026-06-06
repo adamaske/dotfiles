@@ -83,3 +83,18 @@ map("n", "<leader>gt", function()
 	vim.cmd("tab split")
 	vim.lsp.buf.definition()
 end, { desc = "Go to definition tab split" })
+
+--==============
+-- Test notifications (remove when done)
+--==============
+map("n", "<leader>ti", function()
+	vim.notify("Build completed in 1.2s", vim.log.levels.INFO, { title = "Info" })
+end, { desc = "Test info notification" })
+
+map("n", "<leader>tw", function()
+	vim.notify("Unused variable 'x' on line 42\nConsider removing or prefixing with _", vim.log.levels.WARN, { title = "Warning" })
+end, { desc = "Test warning notification" })
+
+map("n", "<leader>te", function()
+	vim.notify("error[E0308]: mismatched types\n  --> src/main.rs:10:5\n   |\n10 |     let x: i32 = \"hello\";\n   |                  ^^^^^^^ expected `i32`, found `&str`", vim.log.levels.ERROR, { title = "Error" })
+end, { desc = "Test error notification" })

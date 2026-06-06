@@ -29,18 +29,25 @@ return {
             map("n", "<leader>f",  vim.lsp.buf.format,         vim.tbl_extend("force", opts, { desc = "Format file" }))
             map("n", "[d",         vim.diagnostic.goto_prev,   vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
             map("n", "]d",         vim.diagnostic.goto_next,   vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
-            map("n", "<leader>e",  vim.diagnostic.open_float,  vim.tbl_extend("force", opts, { desc = "Show diagnostic" }))
+            map("n", "<leader>xf", vim.diagnostic.open_float,  vim.tbl_extend("force", opts, { desc = "Show diagnostic float" }))
           end,
 
           settings = {
             ["rust-analyzer"] = {
               cargo = {
-                allFeatures = true,       -- check all feature flags
+                allFeatures = true,
                 loadOutDirsFromCheck = true,
               },
               checkOnSave = true,
               check = {
-                command = "clippy",       -- use clippy instead of plain check
+                command = "clippy",
+              },
+              cachePriming = {
+                enable = true,
+                numThreads = "logical",   -- use all logical CPU cores to warm cache fast
+              },
+              files = {
+                watcher = "server",       -- rust-analyzer watches files itself, lower overhead
               },
               inlayHints = {
                 bindingModeHints         = { enable = true },
@@ -50,7 +57,7 @@ return {
                 typeHints                = { enable = true },
               },
               procMacro = {
-                enable = true,            -- needed for Tauri macros
+                enable = true,
               },
             },
           },

@@ -1,19 +1,16 @@
 return {
 
 	{
-		"zootedb0t/citruszest.nvim",
+		"Mofiqul/vscode.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("citruszest").setup({
-				option = {
-					transparent = true,
-					bold = false,
-					italic = true,
-				},
-				style = {},
+			require("vscode").setup({
+				transparent = true,
+				italic_comments = true,
+				disable_nvimtree_bg = true,
 			})
-			vim.cmd("colorscheme citruszest")
+			require("vscode").load()
 		end,
 	}, -- File explorer
 	{
@@ -26,8 +23,19 @@ return {
 		},
 		cmd = "Neotree",
 		keys = {
-			{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file explorer" },
-			{ "<leader>o", "<cmd>Neotree focus<cr>", desc = "Focus file explorer" },
+			{
+				"<leader>e",
+				function()
+					local state = require("neo-tree.sources.manager").get_state("filesystem")
+					local win = state and state.winid
+					if win and vim.api.nvim_win_is_valid(win) and vim.api.nvim_get_current_win() == win then
+						vim.cmd("Neotree close")
+					else
+						vim.cmd("Neotree focus reveal=false")
+					end
+				end,
+				desc = "Toggle/focus file explorer",
+			},
 			{ "<leader>s", group = "splits" },
 			{ "<leader>g", group = "goto" },
 		},
@@ -40,6 +48,12 @@ return {
 				},
 			},
 			filesystem = {
+				window = {
+					mappings = {
+						["-"] = "navigate_up",
+						["."] = "set_root",
+					},
+				},
 				filtered_items = {
 					visible = false,
 					hide_dotfiles = false, -- show dotfiles like .env
