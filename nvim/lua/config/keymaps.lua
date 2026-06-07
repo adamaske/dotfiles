@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 
 -- Replace Escape with jk
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
+map("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Save File
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save File" })
@@ -25,6 +26,12 @@ map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move to upper split" })
+
+-- Same bindings in terminal mode (e.g. Claude pane)
+map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Move to left split" })
+map("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move to right split" })
+map("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Move to lower split" })
+map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Move to upper split" })
 
 -- Resize
 map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase split height" })
