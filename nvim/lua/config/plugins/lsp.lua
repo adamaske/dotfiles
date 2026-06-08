@@ -29,6 +29,7 @@ return {
 				"cssls", -- CSS
 				"jsonls", -- JSON
 				"pyright", -- Python LSP
+				"ruff", -- Python linter + formatter LSP
 			},
 			automatic_installation = true,
 		},
@@ -161,6 +162,7 @@ return {
 				"cssls",
 				"jsonls",
 				"pyright",
+				"ruff",
 			})
 		end,
 	},
