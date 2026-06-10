@@ -91,17 +91,60 @@ map("n", "<leader>gt", function()
 	vim.lsp.buf.definition()
 end, { desc = "Go to definition tab split" })
 
---==============
--- Test notifications (remove when done)
---==============
-map("n", "<leader>ti", function()
-	vim.notify("Build completed in 1.2s", vim.log.levels.INFO, { title = "Info" })
-end, { desc = "Test info notification" })
+--============================================================
+-- Run the current file (writes first; output in a bottom panel)
+--   <leader>R   run     |   inside the panel: jk to exit term mode,
+--   <C-h/j/k/l> to move out. Press <leader>R again to re-run.
+--============================================================
+local runners = {
+	python = function(f)
+		return { "python", f }
+	end,
+	rust = function()
+		return { "cargo", "run" }
+	end,
+	lua = function(f)
+		return { "nvim", "-l", f }
+	end,
+	javascript = function(f)
+		return { "node", f }
+	end,
+	typescript = function(f)
+		return { "node", f }
+	end,
+	sh = function(f)
+		return { "bash", f }
+	end,
+	-- compile-then-run; wrapped in `cmd /c` so the && chains in one shell
+	c = function(f, o)
+		return { "cmd", "/c", ('gcc "%s" -o "%s" && "%s"'):format(f, o, o) }
+	end,
+	cpp = function(f, o)
+		return { "cmd", "/c", ('g++ -std=c++20 "%s" -o "%s" && "%s"'):format(f, o, o) }
+	end,
+}
 
-map("n", "<leader>tw", function()
-	vim.notify("Unused variable 'x' on line 42\nConsider removing or prefixing with _", vim.log.levels.WARN, { title = "Warning" })
-end, { desc = "Test warning notification" })
+local runner_win
+local function run_file()
+	vim.cmd("silent! write")
+	local build = runners[vim.bo.filetype]
+	if not build then
+		vim.notify("No runner for filetype: " .. vim.bo.filetype, vim.log.levels.WARN)
+		return
+	end
+	local cmd = build(vim.fn.expand("%:p"), vim.fn.expand("%:p:r") .. ".exe")
 
-map("n", "<leader>te", function()
-	vim.notify("error[E0308]: mismatched types\n  --> src/main.rs:10:5\n   |\n10 |     let x: i32 = \"hello\";\n   |                  ^^^^^^^ expected `i32`, found `&str`", vim.log.levels.ERROR, { title = "Error" })
-end, { desc = "Test error notification" })
+	-- reuse the panel window if still open, else open one at the bottom
+	if runner_win and vim.api.nvim_win_is_valid(runner_win) then
+		vim.api.nvim_set_current_win(runner_win)
+		vim.cmd("enew")
+	else
+		vim.cmd("botright 15split | enew")
+		runner_win = vim.api.nvim_get_current_win()
+	end
+
+	vim.fn.jobstart(cmd, { term = true })
+	vim.cmd("startinsert")
+end
+
+map("n", "<leader>R", run_file, { desc = "Run current file" })

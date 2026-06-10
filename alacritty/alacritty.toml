@@ -32,7 +32,7 @@ family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
 [cursor]
-style.shape = "Beam"
+style.shape = "eam"
 style.blinking = "On"
 blink_interval = 750
 unfocused_hollow = true

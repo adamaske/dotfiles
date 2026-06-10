@@ -28,8 +28,9 @@ return {
 				"html", -- HTML
 				"cssls", -- CSS
 				"jsonls", -- JSON
-				"pyright", -- Python LSP
+				"basedpyright", -- Python LSP (stricter, better-maintained pyright fork)
 				"ruff", -- Python linter + formatter LSP
+				"clangd", -- C / C++
 			},
 			automatic_installation = true,
 		},
@@ -42,6 +43,9 @@ return {
 		opts = {
 			ensure_installed = {
 				"ruff", -- Python formatter + linter
+				"clang-format", -- C / C++ formatter
+				"codelldb", -- DAP adapter for Rust + C/C++ debugging
+				"debugpy", -- DAP adapter for Python debugging
 			},
 		},
 	},
@@ -114,6 +118,15 @@ return {
 						vim.diagnostic.open_float,
 						vim.tbl_extend("force", opts, { desc = "Show diagnostic float" })
 					)
+
+					-- Inlay hints (inferred types / param names) for any server that supports them
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client and client:supports_method("textDocument/inlayHint") then
+						vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+						map("n", "<leader>ih", function()
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+						end, vim.tbl_extend("force", opts, { desc = "Toggle inlay hints" }))
+					end
 				end,
 			})
 
@@ -129,26 +142,42 @@ return {
 			-- Global capabilities for all servers
 			vim.lsp.config("*", { capabilities = capabilities })
 
-			-- Pyright custom analysis settings
-			vim.lsp.config("pyright", {
+			-- basedpyright analysis settings — real type checking, but quiet about
+			-- third-party stubs so you aren't drowned in noise.
+			vim.lsp.config("basedpyright", {
 				settings = {
-					python = {
+					basedpyright = {
 						analysis = {
-							typeCheckingMode = "basic",
+							typeCheckingMode = "standard", -- was effectively "off"; standard gives useful signal
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
-							diagnosticMode = "workspace",
+							diagnosticMode = "openFilesOnly", -- snappier than scanning the whole workspace
 							autoImportCompletions = true,
-							ignore = { "*" },
+							inlayHints = {
+								variableTypes = true,
+								functionReturnTypes = true,
+								callArgumentNames = true,
+							},
 							diagnosticSeverityOverrides = {
-								reportMissingImports = "none",
-								reportMissingModuleSource = "none",
+								-- keep these off so missing third-party stubs don't spam you
 								reportMissingTypeStubs = "none",
 								reportUnknownMemberType = "none",
 								reportUnknownVariableType = "none",
 							},
 						},
 					},
+				},
+			})
+
+			-- clangd: C / C++. Needs a compile_commands.json for non-trivial projects
+			-- (CMake: configure with -DCMAKE_EXPORT_COMPILE_COMMANDS=ON).
+			vim.lsp.config("clangd", {
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					"--header-insertion=never",
+					"--completion-style=detailed",
 				},
 			})
 
@@ -161,8 +190,9 @@ return {
 				"html",
 				"cssls",
 				"jsonls",
-				"pyright",
+				"basedpyright",
 				"ruff",
+				"clangd",
 			})
 		end,
 	},

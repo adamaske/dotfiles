@@ -173,6 +173,18 @@ return {
 			lazygit = {
 				enabled = true,
 			},
+			-- Render the notification history as a classic bottom panel/split
+			-- instead of the default centered float. <leader>n still toggles it.
+			styles = {
+				notification_history = {
+					border = "top",
+					position = "bottom",
+					height = 0.3,
+					width = 0, -- full width (ignored for bottom splits anyway)
+					title = " Notification History ",
+					title_pos = "center",
+				},
+			},
 		},
 		keys = {
 			{

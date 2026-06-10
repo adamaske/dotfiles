@@ -39,7 +39,7 @@ $global:PsmuxWorkspaces = [ordered]@{
         Window  = 'main'
         Panes   = @(
             @{ Cmd = 'nvim .' }                                   # 1: editor   (left)
-            @{ Split = 'h'; Percent = 40; Type = 'npx tauri dev' } # 2: dev srv  (top-right, pre-filled)
+            @{ Split = 'h'; Percent = 40; Type = 'tdev' }          # 2: dev srv  (top-right, pre-filled)
             @{ Split = 'v'; Percent = 50; Cmd = 'claude' }        # 3: claude   (bottom-right)
         )
     }

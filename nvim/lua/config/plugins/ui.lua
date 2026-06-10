@@ -117,8 +117,14 @@ return {
 				-- Group labels — organises your Space menu into sections
 				{ "<leader>f", group = "find" },
 				{ "<leader>r", group = "rust" },
-				{ "<leader>h", group = "git hunks" },
+				{ "<leader>h", group = "harpoon" }, -- was mislabeled "git hunks"
+				{ "<leader>H", group = "git" }, -- gitsigns hunks
 				{ "<leader>b", group = "buffers" },
+				{ "<leader>D", group = "debug" },
+				{ "<leader>t", group = "test" },
+				{ "<leader>a", group = "ai/claude" },
+				{ "<leader>x", group = "diagnostics" },
+				{ "<leader>v", group = "venv" },
 			},
 		},
 	},
