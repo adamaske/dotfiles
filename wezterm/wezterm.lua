@@ -58,6 +58,19 @@ wezterm.on("gui-startup", function()
   end
 end)
 
+wezterm.on("gui-startup", function()
+  local sock_dir = wezterm.home_dir .. "\\.local\\share\\wezterm"
+  for _, sock in ipairs(wezterm.glob(sock_dir .. "\\gui-sock-*")) do
+    local pid = sock:match("gui%-sock%-(%d+)$")
+    if pid then
+      local _, stdout, _ = wezterm.run_child_process({ "tasklist", "/FI", "PID eq " .. pid, "/FO", "CSV", "/NH" })
+      if not stdout:find(pid) then
+        os.remove(sock)
+      end
+    end
+  end
+end)
+
 wezterm.on("window-focus-changed", function(window, pane)
   local overrides = window:get_config_overrides() or {}
   overrides.window_background_opacity = window:is_focused() and 0.3 or 0.3

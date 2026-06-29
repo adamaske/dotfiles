@@ -25,6 +25,8 @@ return {
 				json = { "prettier" },
 				lua = { "stylua" },
 				python = { "ruff_format" },
+				c = { "clang-format" },
+				cpp = { "clang-format" },
 			},
 
 			-- Format automatically on save
