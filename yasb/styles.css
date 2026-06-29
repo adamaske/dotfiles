@@ -23,12 +23,12 @@
 	--font-weight-semibold: 500;
 	--font-weight-bold: 700;
 	
-	/* Windows 11 Dark Theme Colors */
-	--color-background-base: rgba(8, 8, 8, 0.6);
-	--color-background-layer: rgba(44, 44, 44, 0.5);
-	--color-background-elevated: rgba(44, 44, 44, 0.4);
-	--color-background-elevated-x2: rgba(44, 44, 44, 0.8);
-	--color-taskbar: rgba(43, 44, 45, 0.85);
+	/* Gruvbox Dark Hard (mirrors Waybar) */
+	--color-background-base: rgba(29, 32, 33, 0.72);
+	--color-background-layer: rgba(60, 56, 54, 0.5);
+	--color-background-elevated: rgba(60, 56, 54, 0.45);
+	--color-background-elevated-x2: rgba(60, 56, 54, 0.85);
+	--color-taskbar: rgba(40, 40, 40, 0.85);
 
 /* Surface Colors */
 	--color-surface-default: rgba(255, 255, 255, 0.0605);
@@ -36,23 +36,23 @@
 	--color-surface-tertiary: rgba(255, 255, 255, 0.0326);
 	--color-surface-disabled: rgba(255, 255, 255, 0.0419);
 	
-	/* Text Colors */
-	--color-text-primary: rgba(255, 255, 255, 1);
-	--color-text-secondary: rgba(255, 255, 255, 0.786);
-	--color-text-tertiary: rgba(255, 255, 255, 0.544);
-	--color-text-disabled: rgba(255, 255, 255, 0.362);
+	/* Text Colors (gruvbox fg #ebdbb2) */
+	--color-text-primary: rgba(235, 219, 178, 1);
+	--color-text-secondary: rgba(235, 219, 178, 0.80);
+	--color-text-tertiary: rgba(235, 219, 178, 0.55);
+	--color-text-disabled: rgba(235, 219, 178, 0.38);
 	
-	/* Accent Colors (Windows Blue) */
-	--color-accent-default: #60CDFF;           /* Default accent */
-	--color-accent-secondary: #0078D4;         /* Secondary accent */
-	--color-accent-tertiary: rgba(96, 205, 255, 0.5);
-	--color-accent-disabled: rgba(255, 255, 255, 0.1581);
+	/* Accent Colors (gruvbox orange #d65d0e) */
+	--color-accent-default: #d65d0e;           /* Default accent */
+	--color-accent-secondary: #af3a03;         /* Secondary accent */
+	--color-accent-tertiary: rgba(214, 93, 14, 0.5);
+	--color-accent-disabled: rgba(235, 219, 178, 0.16);
 	
-	/* Semantic Colors */
-	--color-success: #6CCB5F;
-	--color-warning: #FCE100;
-	--color-error: #FF99A4;
-	--color-info: #60CDFF;
+	/* Semantic Colors (gruvbox) */
+	--color-success: #b8bb26;
+	--color-warning: #fabd2f;
+	--color-error: #fb4934;
+	--color-info: #83a598;
 	
 	/* Interactive States */
 	--color-subtle-fill-rest: rgba(255, 255, 255, 0.0605);
@@ -324,6 +324,50 @@
 	max-height: 1px;
 	background-color: var(--color-stroke-divider);
 	margin: var(--space-4) var(--space-8);
+}
+
+/* ----------------------------------------------------------------------------
+   Komorebi Workspaces + Active Layout + Control (gruvbox)
+   ---------------------------------------------------------------------------- */
+.komorebi-workspaces {
+	padding: 0 var(--space-4);
+}
+.komorebi-workspaces .ws-btn {
+	color: var(--color-text-tertiary);
+	background-color: transparent;
+	border: none;
+	font-size: var(--font-size-body-strong);
+	padding: var(--space-2) var(--space-8);
+	margin: 0 2px;
+	border-radius: var(--radius-medium);
+	min-width: 12px;
+}
+.komorebi-workspaces .ws-btn:hover {
+	color: var(--color-text-secondary);
+	background-color: var(--color-subtle-fill-hover);
+}
+.komorebi-workspaces .ws-btn.populated {
+	color: var(--color-text-secondary);
+}
+.komorebi-workspaces .ws-btn.active {
+	color: #1d2021;
+	background-color: var(--color-accent-default);
+	font-weight: var(--font-weight-semibold);
+}
+.komorebi-active-layout {
+	padding: 0 var(--space-4);
+}
+.komorebi-active-layout .label {
+	color: var(--color-text-secondary);
+	font-size: var(--font-size-body);
+	padding: 0 var(--space-4);
+}
+.komorebi-control {
+	padding: 0 var(--space-4);
+}
+.komorebi-control .label {
+	color: var(--color-text-secondary);
+	padding: 0 var(--space-4);
 }
 
 /* ----------------------------------------------------------------------------

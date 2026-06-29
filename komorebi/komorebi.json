@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.41/schema.json",
+  "app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.json",
+
+  "manage_rules": [
+    { "kind": "Exe", "id": "Claude.exe", "matching_strategy": "Equals" }
+  ],
+
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "unmanaged_window_operation_behaviour": "Op",
+
+  "mouse_follows_focus": false,
+
+  "default_workspace_padding": 16,
+  "default_container_padding": 5,
+
+  "border": true,
+  "border_width": 2,
+  "border_offset": -1,
+  "border_style": "Rounded",
+  "border_colours": {
+    "single": "#d65d0e",
+    "stack": "#689d6a",
+    "monocle": "#d79921",
+    "unfocused": "#665c54"
+  },
+
+  "transparency": true,
+  "transparency_alpha": 209,
+  "transparency_ignore_rules": [
+    { "kind": "Exe", "id": "firefox.exe", "matching_strategy": "Equals" },
+    { "kind": "Exe", "id": "msedge.exe", "matching_strategy": "Equals" },
+    { "kind": "Exe", "id": "mpv.exe", "matching_strategy": "Equals" },
+    { "kind": "Exe", "id": "vlc.exe", "matching_strategy": "Equals" }
+  ],
+
+  "animation": {
+    "enabled": true,
+    "duration": 150,
+    "style": "Linear",
+    "fps": 60
+  },
+
+  "monitors": [
+    {
+      "workspaces": [
+        { "name": "1", "layout": "VerticalStack" },
+        { "name": "2", "layout": "VerticalStack" },
+        { "name": "3", "layout": "VerticalStack" },
+        { "name": "4", "layout": "VerticalStack" },
+        { "name": "5", "layout": "VerticalStack" },
+        { "name": "6", "layout": "VerticalStack" },
+        { "name": "7", "layout": "VerticalStack" },
+        { "name": "8", "layout": "VerticalStack" },
+        { "name": "9", "layout": "VerticalStack" },
+        { "name": "10", "layout": "VerticalStack" }
+      ]
+    }
+  ]
+}

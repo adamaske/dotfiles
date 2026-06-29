@@ -1,0 +1,39 @@
+# yazi.toml — terminal file manager. Theme: gruvbox (see theme.toml).
+# Config dir is ~/.config/yazi via the YAZI_CONFIG_HOME env var (yazi ignores
+# XDG_CONFIG_HOME on Windows, so that var is what points it here).
+
+[mgr]
+ratio          = [1, 3, 4]
+sort_by        = "natural"
+sort_dir_first = true
+sort_sensitive = false
+show_hidden    = false
+show_symlink   = true
+linemode       = "size"
+scrolloff      = 5
+
+[preview]
+max_width  = 1200
+max_height = 1200
+image_filter = "lanczos3"
+
+# Openers: edit -> nvim (blocks so it takes over the pane), open -> default app.
+[opener]
+edit = [
+  { run = 'nvim %*', block = true, desc = "nvim", for = "windows" },
+]
+open = [
+  { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
+]
+reveal = [
+  { run = 'explorer /select,"%1"', orphan = true, desc = "Reveal in Explorer", for = "windows" },
+]
+
+# Open text / code files in nvim; everything else falls back to yazi's defaults.
+[open]
+prepend_rules = [
+  { mime = "text/*",           use = "edit" },
+  { mime = "application/json", use = "edit" },
+  { mime = "application/toml", use = "edit" },
+  { name = "*.{lua,ps1,psm1,toml,yaml,yml,md,markdown,rs,ts,tsx,js,jsx,svelte,css,scss,html,conf,cfg,ini,gitignore,gitconfig}", use = "edit" },
+]

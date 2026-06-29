@@ -1,2 +1,21 @@
+# ─── Logs / runtime state / sockets ──────────────────────────────────────────
+*.log
 yasb/themes/*
-yasb/yasb.log
+herdr/*.sock
+herdr/session.json
+herdr/session-history.json
+
+# ─── Downloaded / generated artifacts (restore on a new machine) ──────────────
+#   yazi flavors/plugins  ->  `ya pkg install`
+yazi/flavors/
+yazi/plugins/
+#   komorebi curated app rules  ->  `komorebic fetch-asc`  (kept tracked below if present)
+
+# ─── Vendored app source, not config (12+ MB) ────────────────────────────────
+yasb/source/
+
+# ─── Account state / potential secrets ───────────────────────────────────────
+gh/hosts.yml
+
+# ─── Stray / machine-local ───────────────────────────────────────────────────
+komorebi/komorebi.bar.json

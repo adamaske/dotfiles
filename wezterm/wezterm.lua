@@ -31,18 +31,32 @@ local SUB_IDX = {"₁","₂","₃","₄","₅","₆","₇","₈","₉","₁₀",
 config.default_prog = { "pwsh.exe", "-NoLogo" } 
 
 -- ─── Appearance ─────────────────────────────────────────────────────────────
-config.color_scheme = "citruszest" 
-config.font = wezterm.font("JetBrainsMono Nerd Font") 
-config.font_size = 14.0 
+config.color_scheme = "citruszest"
+config.font = wezterm.font_with_fallback({ "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font Mono", "Consolas" })
+config.font_size = 14.0
 config.line_height = 1
 
 config.front_end = "OpenGL"
-config.window_padding = { left = 0, right = 0, top = 0, bottom = 0}
+config.window_padding = { left = 8, right = 8, top = 8, bottom = 8}
 config.window_decorations = "RESIZE" 
 config.window_background_opacity = 0.9
 config.win32_system_backdrop = "Tabbed"
-config.initial_cols = 223 
-config.initial_rows = 52 
+config.initial_cols = 256 
+config.initial_rows = 64 
+
+-- Clean up stale GUI sockets from crashed/closed wezterm processes (mirrors Arch)
+wezterm.on("gui-startup", function()
+  local sock_dir = wezterm.home_dir .. "\\.local\\share\\wezterm"
+  for _, sock in ipairs(wezterm.glob(sock_dir .. "\\gui-sock-*")) do
+    local pid = sock:match("gui%-sock%-(%d+)$")
+    if pid then
+      local _, stdout, _ = wezterm.run_child_process({ "tasklist", "/FI", "PID eq " .. pid, "/FO", "CSV", "/NH" })
+      if not stdout:find(pid) then
+        os.remove(sock)
+      end
+    end
+  end
+end)
 
 wezterm.on("window-focus-changed", function(window, pane)
   local overrides = window:get_config_overrides() or {}
@@ -137,15 +151,17 @@ end)
 -- ─── Scrollback ─────────────────────────────────────────────────────────────
 config.scrollback_lines = 10000 
 
--- ─── Leader key: C-a ────────────────────────────────────────────────────────
--- Press Ctrl+A, release, then press the next key within 1 second.
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 } 
+-- ─── Leader key: C-b ────────────────────────────────────────────────────────
+-- psmux-first setup: psmux owns the C-a prefix (panes/windows/sessions, like Arch
+-- tmux), so wezterm's leader lives on C-b and bare Ctrl-hjkl passes straight
+-- through to psmux for seamless nvim<->pane navigation.
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 
 -- ─── Key bindings ───────────────────────────────────────────────────────────
-config.keys = { 
+config.keys = {
 
-  -- Pass C-a through to the shell when pressed twice
-  { key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
+  -- Pass the leader (C-b) through to the shell/psmux when pressed twice
+  { key = "b", mods = "LEADER|CTRL", action = act.SendKey({ key = "b", mods = "CTRL" }) },
 
   -- Splits
   --   C-a \   split right

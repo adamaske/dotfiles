@@ -22,10 +22,30 @@ map("n", "<leader>pv", "<cmd>Ex<CR>", { desc = "Ex" })
 -- Navigation
 --
 --
-map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
-map("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
-map("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
-map("n", "<C-k>", "<C-w>k", { desc = "Move to upper split" })
+-- Seamless navigation between nvim splits and the multiplexer's panes.
+-- nvim owns ctrl-hjkl: move within nvim splits, and at a split edge hand off to
+-- the multiplexer. The handoff is ASYNC (jobstart, not system) so nvim never
+-- freezes while herdr/psmux spawns — that blocking call was the "ctrl+l locks
+-- up" symptom. From a non-nvim pane (shell/Claude) use the multiplexer's own
+-- pane keys (herdr: prefix+h/j/k/l = ctrl+a then h/j/k/l).
+--   herdr -> `herdr pane focus --current`   psmux -> `psmux select-pane`
+local herdr = "C:/Users/adama/AppData/Local/Programs/Herdr/bin/herdr.exe"
+local herdr_dir = { h = "left", j = "down", k = "up", l = "right" }
+local psmux_dir = { h = "L", j = "D", k = "U", l = "R" }
+local function pane_nav(dir)
+	local prev = vim.api.nvim_get_current_win()
+	vim.cmd.wincmd(dir)
+	if prev ~= vim.api.nvim_get_current_win() then return end -- moved within nvim
+	if vim.env.HERDR_PANE_ID and vim.fn.executable(herdr) == 1 then
+		vim.fn.jobstart({ herdr, "pane", "focus", "--current", "--direction", herdr_dir[dir] })
+	elseif vim.env.TMUX then
+		vim.fn.jobstart({ "psmux", "select-pane", "-" .. psmux_dir[dir] })
+	end
+end
+map("n", "<C-h>", function() pane_nav("h") end, { desc = "Nav left (nvim/herdr)" })
+map("n", "<C-j>", function() pane_nav("j") end, { desc = "Nav down (nvim/herdr)" })
+map("n", "<C-k>", function() pane_nav("k") end, { desc = "Nav up (nvim/herdr)" })
+map("n", "<C-l>", function() pane_nav("l") end, { desc = "Nav right (nvim/herdr)" })
 
 -- Same bindings in terminal mode (e.g. Claude pane)
 map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Move to left split" })
@@ -91,17 +111,60 @@ map("n", "<leader>gt", function()
 	vim.lsp.buf.definition()
 end, { desc = "Go to definition tab split" })
 
---==============
--- Test notifications (remove when done)
---==============
-map("n", "<leader>ti", function()
-	vim.notify("Build completed in 1.2s", vim.log.levels.INFO, { title = "Info" })
-end, { desc = "Test info notification" })
+--============================================================
+-- Run the current file (writes first; output in a bottom panel)
+--   <leader>R   run     |   inside the panel: jk to exit term mode,
+--   <C-h/j/k/l> to move out. Press <leader>R again to re-run.
+--============================================================
+local runners = {
+	python = function(f)
+		return { "python", f }
+	end,
+	rust = function()
+		return { "cargo", "run" }
+	end,
+	lua = function(f)
+		return { "nvim", "-l", f }
+	end,
+	javascript = function(f)
+		return { "node", f }
+	end,
+	typescript = function(f)
+		return { "node", f }
+	end,
+	sh = function(f)
+		return { "bash", f }
+	end,
+	-- compile-then-run; wrapped in `cmd /c` so the && chains in one shell
+	c = function(f, o)
+		return { "cmd", "/c", ('gcc "%s" -o "%s" && "%s"'):format(f, o, o) }
+	end,
+	cpp = function(f, o)
+		return { "cmd", "/c", ('g++ -std=c++20 "%s" -o "%s" && "%s"'):format(f, o, o) }
+	end,
+}
 
-map("n", "<leader>tw", function()
-	vim.notify("Unused variable 'x' on line 42\nConsider removing or prefixing with _", vim.log.levels.WARN, { title = "Warning" })
-end, { desc = "Test warning notification" })
+local runner_win
+local function run_file()
+	vim.cmd("silent! write")
+	local build = runners[vim.bo.filetype]
+	if not build then
+		vim.notify("No runner for filetype: " .. vim.bo.filetype, vim.log.levels.WARN)
+		return
+	end
+	local cmd = build(vim.fn.expand("%:p"), vim.fn.expand("%:p:r") .. ".exe")
 
-map("n", "<leader>te", function()
-	vim.notify("error[E0308]: mismatched types\n  --> src/main.rs:10:5\n   |\n10 |     let x: i32 = \"hello\";\n   |                  ^^^^^^^ expected `i32`, found `&str`", vim.log.levels.ERROR, { title = "Error" })
-end, { desc = "Test error notification" })
+	-- reuse the panel window if still open, else open one at the bottom
+	if runner_win and vim.api.nvim_win_is_valid(runner_win) then
+		vim.api.nvim_set_current_win(runner_win)
+		vim.cmd("enew")
+	else
+		vim.cmd("botright 15split | enew")
+		runner_win = vim.api.nvim_get_current_win()
+	end
+
+	vim.fn.jobstart(cmd, { term = true })
+	vim.cmd("startinsert")
+end
+
+map("n", "<leader>R", run_file, { desc = "Run current file" })

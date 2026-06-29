@@ -1,0 +1,63 @@
+# herdr config — primary multiplexer (fully adopted)
+#   theme: gruvbox    shell: pwsh    prefix: ctrl+a (WezTerm's leader stays ctrl+b)
+
+onboarding = false
+
+[theme]
+name = "gruvbox"
+auto_switch = false
+
+[terminal]
+default_shell = "pwsh"
+new_cwd = "follow"
+
+[update]
+channel = "preview"
+
+[keys]
+prefix = "ctrl+a"
+
+# Jump to whichever agent needs attention (agent_panel_sort = "priority" orders
+# them so prefix+alt+1 is the most-urgent, e.g. a blocked Claude).
+focus_agent    = "prefix+alt+1..9"
+previous_agent = "prefix+alt+k"
+next_agent     = "prefix+alt+j"
+
+# Worktrees — run parallel agents on isolated branch checkouts.
+open_worktree   = "prefix+shift+o"
+remove_worktree = "prefix+alt+d"
+
+# Pane focus stays at prefix+h/j/k/l (ctrl+a then h/j/k/l). nvim owns bare
+# ctrl-hjkl and hands off to herdr at the split edge (async — no freeze); from a
+# non-nvim pane (shell/Claude) use prefix+h/j/k/l to move. Binding bare ctrl-hjkl
+# here would make herdr grab them everywhere, but since it isn't vim-aware that
+# hijacks nvim's internal splits and shell ctrl+l-clear — so it's left off.
+#   focus_pane_left  = ["prefix+h", "ctrl+h"]   # (uncomment for "always" pane nav)
+#   focus_pane_down  = ["prefix+j", "ctrl+j"]
+#   focus_pane_up    = ["prefix+k", "ctrl+k"]
+#   focus_pane_right = ["prefix+l", "ctrl+l"]
+
+# lazygit in a throwaway pane (closes when you quit lazygit)
+[[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
+description = "run lazygit"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "priority"
+
+# Surface a background agent going blocked/done (was silent before).
+[ui.toast]
+delivery = "system"      # native Windows toast; switch to "herdr" for in-app if flaky
+delay_seconds = 1
+
+[ui.sound]
+enabled = true
+
+[worktrees]
+directory = "~/herdr-worktrees"
+
+[experimental]
+pane_history = false

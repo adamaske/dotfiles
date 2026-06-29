@@ -35,8 +35,9 @@ bars:
         [
           # "task_view",   # If desired, you can replace the "task_view" and "home" widgets.
           "home",
-          "windows_workspaces", 
-          "taskbar", 
+          "windows_workspaces",
+          "komorebi_layout",
+          "taskbar",
           "media"
         ]
       center: 
@@ -45,6 +46,7 @@ bars:
         ]
       right:
         [
+          "komorebi_control",
           "systray",
           "apps",
           "stats_group",
@@ -97,6 +99,24 @@ widgets:
         label_workspace_active_btn: "\udb81\udc3e"
         label_workspace_populated_btn: "\udb81\udc3e"
         hide_if_offline: true
+
+  komorebi_layout:
+      type: "komorebi.active_layout.ActiveLayoutWidget"
+      options:
+        hide_if_offline: true
+        label: "{icon}"
+        callbacks:
+          on_left: "next_layout"
+          on_middle: "toggle_monocle"
+          on_right: "prev_layout"
+
+  komorebi_control:
+      type: "komorebi.control.KomorebiControlWidget"
+      options:
+        run_ahk: true
+        run_whkd: false
+        run_masir: false
+        show_version: false
 
   taskbar:
       type: "yasb.taskbar.TaskbarWidget"
@@ -408,14 +428,13 @@ widgets:
       options:
         label: "{data}"
         app_list:
-          # - { icon: "\uf0a2", launch: "notification_center" }
-          # - { icon: "\ueb51", launch: "quick_settings" }
-          - { icon: "\uf46a", launch: "cmd /c start ms-settings:windowsupdate" }
-          # - { icon: "\uf422", launch: "search" }
-          - { icon: "\ueb03", launch: "cmd /c Taskmgr", name: "Task Manager" }
-          - { icon: "\uf489", launch: "wt", name: "Windows Terminal" }
-          - { icon: "\udb82\ude1e", launch: "cmd /c code", name: "VS Code" }
-          - { icon: "\uf1b6", launch: "C:/Program Files (x86)/Steam/Steam.exe", name: "Steam" }
+          - { icon: "\uf269", launch: '"C:\Program Files\Mozilla Firefox\firefox.exe" -new-window', name: "Firefox" }
+          - { icon: "\uf07c", launch: 'C:\Users\adama\AppData\Local\Voidstar\FilePilot\FPilot.exe', name: "File Pilot" }
+          - { icon: "\uf249", launch: 'explorer.exe shell:AppsFolder\com.electron.notion', name: "Notion" }
+          - { icon: "\udb82\ude1e", launch: "code", name: "VS Code" }
+          - { icon: "\uf489", launch: "wezterm-gui start -- pwsh -NoExit -Command ws dev", name: "WezTerm (dev)" }
+          - { icon: "\uf392", launch: 'explorer.exe shell:AppsFolder\com.squirrel.Discord.Discord', name: "Discord" }
+          - { icon: "\uf001", launch: 'explorer.exe shell:AppsFolder\com.squirrel.TIDAL.TIDAL', name: "Tidal" }
         container_padding:
           top: 0
           left: 8
