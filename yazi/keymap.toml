@@ -1,0 +1,6 @@
+# Fuzzy finding (plugins from `ya pkg add yazi-rs/plugins:{fzf,zoxide}`).
+[mgr]
+prepend_keymap = [
+  { on = "Z", run = "plugin fzf",    desc = "Fuzzy-find a file/dir and jump (fzf)" },
+  { on = "z", run = "plugin zoxide", desc = "Jump to a frecent dir (zoxide)" },
+]

@@ -1,5 +1,12 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "yazi-rs/plugins:fzf"
+rev = "39aaf6d"
+hash = "99aa06d3014798d86001c324468d497f"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:zoxide"
+rev = "39aaf6d"
+hash = "99aa06d3014798d86001c324468d497f"
 
 [[flavor.deps]]
 use = "bennyyip/gruvbox-dark"

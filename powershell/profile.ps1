@@ -54,6 +54,11 @@ function y {
     Remove-Item -Path $tmp
 }
 
+# zoxide: smarter cd. `z <partial>` jumps to a frecent dir, `zi` picks one with fzf.
+# (Plain `cd` is unchanged; zoxide just learns dirs as you move around — which also
+# feeds yazi's `z` zoxide jump.)
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 # psmux dev-session launcher: provides `ws <name>`  (mirrors tmux sessions.sh)
 . "$HOME\.config\psmux\workspaces.ps1"
 
