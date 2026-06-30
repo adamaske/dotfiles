@@ -162,7 +162,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
 end)
 
 -- ─── Scrollback ─────────────────────────────────────────────────────────────
-config.scrollback_lines = 10000 
+config.scrollback_lines = 10000
 
 -- ─── Leader key: C-b ────────────────────────────────────────────────────────
 -- psmux-first setup: psmux owns the C-a prefix (panes/windows/sessions, like Arch
@@ -172,6 +172,20 @@ config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 
 -- ─── Key bindings ───────────────────────────────────────────────────────────
 config.keys = {
+
+  -- herdr v0.7.1-preview panics when WezTerm's default PasteFrom("Clipboard")
+  -- sends the bracketed paste wrapper (\033[200~...\033[201~) to herdr's
+  -- raw_input — it hits an unhandled CSI sequence and crashes silently.
+  -- Workaround: read clipboard via PowerShell, send as raw text (no bracket
+  -- wrapper). Remove once herdr fixes its paste handling upstream.
+  { key = "V", mods = "CTRL|SHIFT", action = wezterm.action_callback(function(window, pane)
+    local _, stdout, _ = wezterm.run_child_process({ "powershell.exe", "-NoProfile", "-NonInteractive", "-Command", "Get-Clipboard" })
+    if stdout and #stdout > 0 then
+      stdout = stdout:gsub("\r\n", "\n")
+      if stdout:sub(-1) == "\n" then stdout = stdout:sub(1, -2) end
+      pane:send_text(stdout)
+    end
+  end) },
 
   -- Pass the leader (C-b) through to the shell/psmux when pressed twice
   { key = "b", mods = "LEADER|CTRL", action = act.SendKey({ key = "b", mods = "CTRL" }) },

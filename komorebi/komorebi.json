@@ -8,6 +8,13 @@
       "matching_strategy": "Equals"
     }
   ],
+  "ignore_rules": [
+    {
+      "kind": "Exe",
+      "id": "handy.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
   "unmanaged_window_operation_behaviour": "Op",
