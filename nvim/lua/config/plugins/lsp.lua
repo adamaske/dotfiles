@@ -181,6 +181,18 @@ return {
 				},
 			})
 
+			-- texlab: LaTeX LSP (citation/label completion, cross-refs, chktex
+			-- diagnostics). Binary comes from scoop (main/texlab), not mason.
+			-- VimTeX drives the actual build/viewer, so leave texlab's build off.
+			vim.lsp.config("texlab", {
+				settings = {
+					texlab = {
+						build = { onSave = false },
+						chktex = { onOpenAndSave = true, onEdit = false },
+					},
+				},
+			})
+
 			-- Enable servers — nvim-lspconfig ships lsp/*.lua files that provide
 			-- the cmd/filetypes/root_markers for each one
 			vim.lsp.enable({
@@ -193,6 +205,7 @@ return {
 				"basedpyright",
 				"ruff",
 				"clangd",
+				"texlab",
 			})
 		end,
 	},

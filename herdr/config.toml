@@ -61,3 +61,7 @@ directory = "~/herdr-worktrees"
 
 [experimental]
 pane_history = false
+# Render Kitty graphics protocol inside panes (WezTerm is the kitty-compatible
+# outer terminal). This is what lets the LaTeX preview pane show the rendered
+# PDF pages inline — the iTerm2 image protocol is not forwarded by herdr.
+kitty_graphics = true
