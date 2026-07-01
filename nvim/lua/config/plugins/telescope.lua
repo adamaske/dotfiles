@@ -55,7 +55,14 @@ return {
 						".git/",
 						"target/", -- Rust build output
 						"dist/",
+						"build/",
 						".svelte-kit/",
+						".next/",
+						"__pycache__/",
+						"%.venv/",
+						"venv/",
+						"vendor/",
+						".terraform/",
 					},
 				},
 

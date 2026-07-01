@@ -53,6 +53,24 @@ map("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move to right split" })
 map("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Move to lower split" })
 map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Move to upper split" })
 
+-- Word-wise navigation with ctrl+arrows, clamped to the current line.
+-- Default `w`/`b` wrap onto the next/previous line at a line's edge; here we do
+-- the motion, and if it crossed a line boundary we instead land at the very end
+-- (forward) or very start (backward) of the original line -- matching how most
+-- editors treat Ctrl+Right / Ctrl+Left.
+local function word_move(motion)
+	local start = vim.api.nvim_win_get_cursor(0)
+	vim.cmd("normal! " .. motion)
+	local now = vim.api.nvim_win_get_cursor(0)
+	if now[1] ~= start[1] then
+		local col = motion == "w" and #vim.fn.getline(start[1]) or 0
+		vim.api.nvim_win_set_cursor(0, { start[1], col })
+	end
+end
+-- Insert mode only: normal mode keeps ctrl+arrows for split resizing (below).
+map("i", "<C-Right>", function() word_move("w") end, { desc = "Word forward (clamped to line)" })
+map("i", "<C-Left>", function() word_move("b") end, { desc = "Word back (clamped to line)" })
+
 -- Resize
 map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase split height" })
 map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease split height" })

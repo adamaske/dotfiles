@@ -39,8 +39,15 @@ config.line_height = 1
 config.front_end = "OpenGL"
 config.window_padding = { left = 8, right = 8, top = 8, bottom = 8}
 config.window_decorations = "RESIZE" 
-config.window_background_opacity = 0.9
-config.win32_system_backdrop = "Tabbed"
+config.window_background_opacity = 0.92
+-- "Disable" turns off the Windows Mica/Tabbed material. That material blurs and
+-- smooths the desktop behind the window (the hazy "barely the real background"
+-- look) and Windows only relaxes it when unfocused -- hence focused looked worse.
+-- With it off, transparency is pure alpha via window_background_opacity: no blur,
+-- consistent focused/unfocused, tune the number below for more/less see-through.
+config.win32_system_backdrop = "Disable"
+config.macos_window_background_blur = 0
+config.text_background_opacity = 1.0
 config.initial_cols = 256 
 config.initial_rows = 64 
 
@@ -73,7 +80,7 @@ end)
 
 wezterm.on("window-focus-changed", function(window, pane)
   local overrides = window:get_config_overrides() or {}
-  overrides.window_background_opacity = window:is_focused() and 0.3 or 0.3
+  overrides.window_background_opacity = window:is_focused() and 0.92 or 0.85
   window:set_config_overrides(overrides)
 end)
 
