@@ -65,6 +65,9 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # herdr workspace launcher (trial): provides `herd <name>`
 . "$HOME\.config\herdr\herd.ps1"
 
+# treehouse feature worktrees: provides `feat <name>` / `feat-done`
+. "$HOME\.config\scripts\feat.ps1"
+
 fastfetch --logo scientific
 Write-Host ""
 

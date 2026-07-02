@@ -1,0 +1,12 @@
+# Treehouse config for the dotfiles repo (~/.config)
+# Repo-level config takes precedence over ~/.config/treehouse/config.toml.
+#
+# Lightweight repo (config files, no build). Parallel agents here are rare,
+# so a small pool is plenty. This file is version-controlled and mirrors
+# across both PCs automatically.
+
+# Upper bound on concurrent worktrees for this repo = max agents at once.
+max_trees = 3
+
+# Custom worktree root. Comment out to use the default ~/.treehouse.
+root = "$HOME/worktrees/config"
