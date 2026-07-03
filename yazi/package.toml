@@ -1,14 +1,9 @@
-[[plugin.deps]]
-use = "yazi-rs/plugins:fzf"
-rev = "39aaf6d"
-hash = "99aa06d3014798d86001c324468d497f"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:zoxide"
-rev = "39aaf6d"
-hash = "99aa06d3014798d86001c324468d497f"
-
 [[flavor.deps]]
 use = "bennyyip/gruvbox-dark"
 rev = "619fdc5"
 hash = "a2640557497f7bf5ccf0c5349fa9c615"
+
+[[flavor.deps]]
+use = "gosxrgxx/flexoki-dark"
+rev = "25d28ce"
+hash = "234becaef213df8a0bc5f3f3355d647a"

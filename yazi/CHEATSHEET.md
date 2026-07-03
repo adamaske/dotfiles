@@ -1,18 +1,23 @@
 # yazi cheat sheet
 
 Launch with **`y`** (quits + cd's to where you ended up). Inside yazi press **`~`**
-or **`F1`** for the live, version-accurate keymap. Theme: gruvbox. Text/code files
-open in **nvim**; other files open with the default app.
+or **`F1`** for the live, version-accurate keymap, or **`F2`** for this curated cheat
+sheet. Theme: flexoki-dark. Text/code files open in **nvim**; other files open with
+the default app.
 
 > Customised vs yazi defaults: **`z` = zoxide**, **`Z` = fzf** (yazi's default is the
-> reverse) — so `z` matches your shell's zoxide. Set in `keymap.toml`.
+> reverse) — so `z` matches your shell's zoxide. **`Enter`** on a directory opens it
+> in nvim instead of descending into it (use `l`/`→` to actually navigate in). **`e`**
+> force-opens whatever's hovered in nvim, regardless of file type. All set in
+> `keymap.toml` / `plugins/enter-nvim.yazi`.
 
 ## Navigate
 | key | action |
 |---|---|
 | `k` / `↑` · `j` / `↓` | up · down |
 | `h` / `←` | parent directory |
-| `l` / `→` / `Enter` | enter directory / open file |
+| `l` / `→` | enter directory / open file |
+| `Enter` | open dir in **nvim** · open file normally |
 | `H` · `L` | back · forward (history) |
 | `gg` · `G` | top · bottom |
 | `Ctrl+u` · `Ctrl+d` | half page up · down |
@@ -64,6 +69,7 @@ open in **nvim**; other files open with the default app.
 | key | action |
 |---|---|
 | `o` / `Enter` | open |
+| `e` | force-open hovered item in **nvim** |
 | `O` | open with… (pick an app) |
 | `;` | run a shell command |
 | `:` | run a shell command and wait for it |
@@ -102,3 +108,4 @@ open in **nvim**; other files open with the default app.
 | `Ctrl+c` | close current tab (or quit if last) |
 | `Ctrl+z` | suspend |
 | `~` / `F1` | help (live keymap) |
+| `F2` | this curated cheat sheet |

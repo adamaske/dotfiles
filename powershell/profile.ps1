@@ -17,6 +17,14 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 $env:EDITOR = 'nvim'
 $env:VISUAL = 'nvim'
 
+# yazi ignores XDG_CONFIG_HOME on Windows, so point it at ~/.config/yazi explicitly.
+# Without this, yazi reads the empty %APPDATA%\yazi\config and shows default theme/keys.
+$env:YAZI_CONFIG_HOME = "$HOME\.config\yazi"
+
+# yazi shells out to file(1) for mime detection (previews, opener rules). There's no
+# `file` on Windows by default; Git for Windows ships one, so point yazi at it.
+$env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
+
 # ── Aliases / functions (ported from ~/.zshrc) ───────────────────────────────
 Set-Alias -Name cat -Value bat -Option AllScope -Force
 function v { nvim @args }                # v -> nvim

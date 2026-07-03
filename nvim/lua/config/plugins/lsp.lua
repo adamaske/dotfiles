@@ -187,6 +187,7 @@ return {
 			vim.lsp.config("texlab", {
 				settings = {
 					texlab = {
+						auxDirectory = "build", -- match latexmk's aux_dir so texlab finds logs
 						build = { onSave = false },
 						chktex = { onOpenAndSave = true, onEdit = false },
 					},

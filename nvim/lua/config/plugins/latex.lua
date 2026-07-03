@@ -24,6 +24,7 @@ return {
 			-- is what drives tdf's live reload.
 			vim.g.vimtex_compiler_latexmk = {
 				continuous = 1,
+				aux_dir = "build", -- keep .aux/.log/.bbl etc out of the source dir; PDF stays beside the .tex
 				options = {
 					"-verbose",
 					"-file-line-error",
@@ -66,8 +67,7 @@ return {
 				pattern = "tex",
 				callback = function()
 					vim.opt_local.conceallevel = 2
-					vim.opt_local.wrap = true
-					vim.opt_local.linebreak = true -- wrap on words, not mid-word
+					vim.opt_local.wrap = false -- soft wrap made vertical jumps confusing
 					vim.opt_local.spell = true
 					vim.opt_local.spelllang = "en_us"
 				end,

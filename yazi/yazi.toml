@@ -1,4 +1,4 @@
-# yazi.toml — terminal file manager. Theme: gruvbox (see theme.toml).
+# yazi.toml — terminal file manager. Theme: flexoki-dark (see theme.toml).
 # Config dir is ~/.config/yazi via the YAZI_CONFIG_HOME env var (yazi ignores
 # XDG_CONFIG_HOME on Windows, so that var is what points it here).
 

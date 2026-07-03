@@ -19,3 +19,4 @@ gh/hosts.yml
 
 # ─── Stray / machine-local ───────────────────────────────────────────────────
 komorebi/komorebi.bar.json
+/worktrees/config/.treehouse

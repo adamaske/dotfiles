@@ -1,6 +1,13 @@
-# Fuzzy finding (plugins from `ya pkg add yazi-rs/plugins:{fzf,zoxide}`).
+# Fuzzy finding (fzf/zoxide are built into yazi itself, no plugin install needed).
+# Shortcuts: `~` / `F1` = yazi's live, always-accurate keymap (searchable).
+#            `F2`       = the curated, categorised CHEATSHEET.md (opens in nvim).
+#            `<Enter>`  = on a dir, open it in nvim; on a file, open normally.
+#            `e`        = force-open the hovered item in nvim, whatever it is.
 [mgr]
 prepend_keymap = [
   { on = "Z", run = "plugin fzf",    desc = "Fuzzy-find a file/dir and jump (fzf)" },
   { on = "z", run = "plugin zoxide", desc = "Jump to a frecent dir (zoxide)" },
+  { on = "<F2>", run = "shell 'nvim \"%YAZI_CONFIG_HOME%\\CHEATSHEET.md\"' --block", desc = "Open the curated cheat sheet" },
+  { on = "<Enter>", run = "plugin enter-nvim", desc = "Open dir in nvim, else open file" },
+  { on = "e", run = "shell 'nvim \"%h\"' --block", desc = "Edit hovered item in nvim" },
 ]
