@@ -29,11 +29,18 @@ return {
 				cpp = { "clang-format" },
 			},
 
-			-- Format automatically on save
-			format_on_save = {
-				timeout_ms = 2000,
-				lsp_fallback = true, -- fall back to LSP formatter if conform can't find one
-			},
+			-- Format automatically on save — except LaTeX: every :w drives
+			-- latexmk -pvc, and latexindent rewriting the buffer mid-compile
+			-- moves the cursor around. Format tex on demand (<leader>f/<leader>cf).
+			format_on_save = function(bufnr)
+				if vim.bo[bufnr].filetype == "tex" then
+					return nil
+				end
+				return {
+					timeout_ms = 2000,
+					lsp_fallback = true, -- fall back to LSP formatter if conform can't find one
+				}
+			end,
 		},
 	},
 
@@ -53,13 +60,8 @@ return {
 					map = "<M-e>",
 				},
 			})
-
-			-- Hook into cmp safely — only if cmp is available
-			local ok, cmp = pcall(require, "nvim-cmp")
-			if ok then
-				local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-				cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-			end
+			-- (No completion hook needed: blink.cmp's accept.auto_brackets
+			-- handles () after accepted functions itself.)
 		end,
 	},
 
