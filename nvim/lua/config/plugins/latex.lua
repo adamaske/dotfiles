@@ -16,8 +16,14 @@ return {
 			-- GUI viewer via :VimtexView if you ever want SyncTeX forward search.
 			vim.g.vimtex_view_method = "general"
 			vim.g.vimtex_view_general_viewer = "SumatraPDF"
-			vim.g.vimtex_view_general_options =
-				"-reuse-instance -forward-search @tex @line @pdf"
+			-- -inverse-search registers the reverse jump with Sumatra: double-click
+			-- anywhere in the PDF and the running Neovim jumps to that source line
+			-- (VimtexInverseSearch finds the live nvim instance via its server pipe).
+			vim.g.vimtex_view_general_options = table.concat({
+				"-reuse-instance",
+				"-forward-search @tex @line @pdf",
+				[[-inverse-search "nvim --headless -c \"VimtexInverseSearch %l '%f'\""]],
+			}, " ")
 
 			-- Continuous compilation (latexmk -pvc) is VimTeX's default mode:
 			-- <leader>ll starts it, and it rebuilds the PDF on every :w, which
@@ -95,5 +101,22 @@ return {
 			{ "<leader>lc", "<cmd>VimtexClean<cr>", ft = "tex", desc = "LaTeX: clean aux files" },
 			{ "<leader>le", "<cmd>VimtexErrors<cr>", ft = "tex", desc = "LaTeX: show errors" },
 		},
+	},
+
+	-- Gilles Castel-style auto-expanding math snippets: `mk` → inline math,
+	-- `dm` → display math, `//` → \frac{}{}, `sr` → ^2, `td` → ^{}, matrices,
+	-- greek letters, etc. They fire automatically (no Tab needed) and only
+	-- inside math zones, so prose is never mangled. Complements our own
+	-- structure snippets in <config>/snippets/tex.lua (sec/fig/eq/... with
+	-- self-filling labels).
+	{
+		"iurimateus/luasnip-latex-snippets.nvim",
+		dependencies = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+		ft = "tex",
+		config = function()
+			-- use_treesitter=false → VimTeX's syntax layer decides "am I in math?"
+			-- (no latex treesitter parser needed, and it matches our conceal setup)
+			require("luasnip-latex-snippets").setup({ use_treesitter = false })
+		end,
 	},
 }

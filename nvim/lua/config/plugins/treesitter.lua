@@ -25,8 +25,15 @@ return {
           "cpp",
           "cmake",
           "make",
+          "bibtex",
         },
-        highlight = { enable = true }, -- was missing entirely
+        highlight = {
+          enable = true, -- was missing entirely
+          -- VimTeX's syntax layer owns tex files: the conceal rendering
+          -- (α, ², fractions) and quickfix parsing depend on it. Keep the
+          -- latex parser out even if it gets installed later.
+          disable = { "latex" },
+        },
         indent = { enable = true },
       })
     end,
