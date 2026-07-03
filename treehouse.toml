@@ -8,5 +8,6 @@
 # Upper bound on concurrent worktrees for this repo = max agents at once.
 max_trees = 3
 
-# Custom worktree root. Comment out to use the default ~/.treehouse.
-root = "$HOME/worktrees/config"
+# No custom `root`: treehouse defaults to ~/.treehouse (OUTSIDE the repo).
+# (An explicit root = "$HOME/..." is NOT expanded by treehouse and lands the pool
+#  inside the repo as ./worktrees — use an absolute path if you ever set one.)

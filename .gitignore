@@ -17,6 +17,9 @@ yasb/source/
 # ─── Account state / potential secrets ───────────────────────────────────────
 gh/hosts.yml
 
+# ─── Treehouse worktree pool (never commit — created inside the repo) ─────────
+worktrees/
+
 # ─── Stray / machine-local ───────────────────────────────────────────────────
 komorebi/komorebi.bar.json
 /worktrees/config/.treehouse

@@ -5,6 +5,8 @@
 #    feat <name>        lease a warm worktree, branch feat/<name>, launch Claude
 #    feat-ship [-Base b] push the branch, open a PR, and return the worktree
 #    feat-done [path]   return the current (or given) worktree to the pool
+#    feat-cancel [path] abandon: discard changes, return the worktree, drop the branch
+#    feat-list          show active worktrees (git branches + treehouse pool state)
 #
 #  The loop (run from inside a treehouse-tracked repo, e.g. ~/dev/NIRWizard):
 #    feat forward-cache            # -> warm isolated worktree, on branch feat/forward-cache, Claude up
@@ -126,4 +128,73 @@ function feat-done {
     if ($Force) { $thArgs += '--force' }
     treehouse @thArgs
     Write-Host "feat-done: returned $wt to the pool (branch & PR untouched)." -ForegroundColor Green
+}
+
+function feat-cancel {
+    param(
+        [Parameter(Position = 0)][string]$Path,  # worktree to cancel (default: current)
+        [switch]$Remote,      # ALSO close the PR and delete the pushed branch on origin
+        [switch]$KeepBranch   # keep the local branch ref (default: delete it)
+    )
+
+    if (-not (Get-Command treehouse -ErrorAction SilentlyContinue)) {
+        Write-Host "feat-cancel: treehouse is not on PATH." -ForegroundColor Yellow; return
+    }
+    if ($Path -and -not (Test-Path $Path)) {
+        Write-Host "feat-cancel: no such path: $Path" -ForegroundColor Yellow; return
+    }
+    $wt = if ($Path) { (Resolve-Path $Path).Path } else { (Get-Location).Path }
+
+    # Identify the branch and the repo's default branch (never cancel the default).
+    $branch = git -C $wt rev-parse --abbrev-ref HEAD 2>$null
+    if ($branch -eq 'HEAD') { $branch = $null }   # detached — nothing to drop
+    $def = (git -C $wt symbolic-ref --short refs/remotes/origin/HEAD 2>$null) -replace '^origin/', ''
+    if ($branch -and $def -and $branch -eq $def) {
+        Write-Host "feat-cancel: on the default branch ($branch), not a feature branch — aborting." -ForegroundColor Yellow
+        return
+    }
+
+    # Step OUT of the worktree we're about to reset: cd to the repo's main worktree.
+    $main = ((git -C $wt worktree list --porcelain 2>$null) |
+             Where-Object { $_ -like 'worktree *' } | Select-Object -First 1) -replace '^worktree ', ''
+    if ($main -and (Test-Path $main)) { Set-Location $main }
+
+    # 1. Force-return: discard uncommitted work, reset, hand the worktree back to the pool.
+    treehouse return $wt --force
+
+    # 2. Optionally tear down the pushed side (outward-facing — opt in with -Remote).
+    if ($Remote -and $branch) {
+        gh pr close $branch --delete-branch 2>$null       # closes PR + deletes origin branch
+        if ($LASTEXITCODE -ne 0) { git push origin --delete $branch 2>$null }  # no PR: just the branch
+        Write-Host "feat-cancel: closed PR / deleted origin/$branch." -ForegroundColor Green
+    }
+
+    # 3. Drop the local branch ref (safe now — the worktree is detached).
+    if ($branch -and -not $KeepBranch) {
+        git branch -D $branch 2>$null | Out-Null
+    }
+
+    $note = if ($branch) { "branch $branch" } else { "(detached, no branch)" }
+    Write-Host "feat-cancel: cancelled $note, returned $wt to the pool." -ForegroundColor Green
+}
+
+function feat-list {
+    param([switch]$Raw)   # -Raw: only treehouse's own pool status (skip the git view)
+
+    if (-not (Get-Command treehouse -ErrorAction SilentlyContinue)) {
+        Write-Host "feat-list: treehouse is not on PATH." -ForegroundColor Yellow; return
+    }
+    if (-not (git rev-parse --show-toplevel 2>$null)) {
+        Write-Host "feat-list: run this from inside a git repo." -ForegroundColor Yellow; return
+    }
+
+    # git view: every worktree and the branch it's checked out on (stable output).
+    if (-not $Raw) {
+        Write-Host "worktrees (branch each is on):" -ForegroundColor Cyan
+        git worktree list
+        Write-Host ""
+    }
+    # treehouse view: pool slots, lease state, and live processes (the source of truth).
+    Write-Host "treehouse pool (lease state + live processes):" -ForegroundColor Cyan
+    treehouse status
 }
