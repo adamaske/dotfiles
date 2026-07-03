@@ -56,12 +56,12 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"hrsh7th/cmp-nvim-lsp",
+			"saghen/blink.cmp",
 		},
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			-- Let cmp-nvim-lsp advertise completion capabilities to all servers
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- Let blink.cmp advertise completion capabilities to all servers
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			vim.lsp.config("*", { capabilities = capabilities }) -- Shared on_attach keymaps
 
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -139,9 +139,6 @@ return {
 				severity_sort = true,
 			})
 
-			-- Global capabilities for all servers
-			vim.lsp.config("*", { capabilities = capabilities })
-
 			-- basedpyright analysis settings — real type checking, but quiet about
 			-- third-party stubs so you aren't drowned in noise.
 			vim.lsp.config("basedpyright", {
@@ -189,6 +186,15 @@ return {
 					texlab = {
 						build = { onSave = false },
 						chktex = { onOpenAndSave = true, onEdit = false },
+						-- Match anywhere in the name, case-insensitive:
+						-- `\ref{helm` finds `sec:helmholtz-decomposition`
+						completion = { matcher = "fuzzy-ignore-case" },
+						-- Show the referenced object inline next to \ref{} / \label{}
+						inlayHints = { labelDefinitions = true, labelReferences = true },
+						-- <leader>f formats through latexindent (ships with MiKTeX);
+						-- modifyLineBreaks off = fix indentation, don't reflow prose
+						latexFormatter = "latexindent",
+						latexindent = { modifyLineBreaks = false },
 					},
 				},
 			})

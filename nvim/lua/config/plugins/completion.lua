@@ -1,94 +1,86 @@
 return {
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",    -- LSP completions
-      "hrsh7th/cmp-buffer",      -- words from current buffer
-      "hrsh7th/cmp-path",        -- file path completions
-      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
-      "saadparwaiz1/cmp_luasnip", -- snippet completions
-      "rafamadriz/friendly-snippets", -- collection of useful snippets
-    },
-    config = function()
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
+	-- LuaSnip: snippet engine. Configured standalone (not inline in blink's
+	-- dependencies) so the LaTeX snippet plugins can depend on it and get the
+	-- same instance with autosnippets already enabled.
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		config = function()
+			require("luasnip").setup({
+				-- Required for the auto-expanding LaTeX math snippets (mk, //, sr, ...)
+				enable_autosnippets = true,
+				-- Re-evaluate function nodes while typing, so e.g. the \label{}
+				-- slug in the tex snippets fills in live as you type the title
+				update_events = "TextChanged,TextChangedI",
+			})
+			-- VSCode-style collection (friendly-snippets)
+			require("luasnip.loaders.from_vscode").lazy_load()
+			-- Our own Lua snippets: <config>/snippets/<filetype>.lua
+			require("luasnip.loaders.from_lua").lazy_load({
+				paths = { vim.fn.stdpath("config") .. "/snippets" },
+			})
+		end,
+	},
 
-      -- Load snippet collection
-      require("luasnip.loaders.from_vscode").lazy_load()
+	-- blink.cmp: completion engine. Replaces nvim-cmp — faster, typo-tolerant
+	-- fuzzy matching (Rust matcher), signature help, and saner ranking, which
+	-- is what makes texlab's label/citation completion actually pleasant.
+	{
+		"saghen/blink.cmp",
+		version = "1.*", -- release tag → downloads the prebuilt Rust fuzzy matcher
+		event = "InsertEnter",
+		dependencies = { "L3MON4D3/LuaSnip" },
+		opts = {
+			snippets = { preset = "luasnip" },
 
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
+			-- Same muscle memory as the old nvim-cmp setup
+			keymap = {
+				preset = "none",
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+				["<Up>"] = { "select_prev", "fallback" },
+				["<Down>"] = { "select_next", "fallback" },
+				["<C-b>"] = { "scroll_documentation_up", "fallback" },
+				["<C-f>"] = { "scroll_documentation_down", "fallback" },
+				["<CR>"] = { "accept", "fallback" }, -- only accepts an explicitly selected item
+				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+				["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-e>"] = { "hide", "fallback" },
+			},
 
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
+			completion = {
+				-- Don't preselect: <CR> is a plain newline unless you picked an item
+				list = { selection = { preselect = false, auto_insert = true } },
+				menu = {
+					border = "rounded",
+					draw = {
+						columns = {
+							{ "kind_icon" },
+							{ "label", "label_description", gap = 1 },
+							{ "source_name" },
+						},
+					},
+				},
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
+					window = { border = "rounded" },
+				},
+				-- Adds () after functions etc. — replaces the old autopairs/cmp hook
+				accept = { auto_brackets = { enabled = true } },
+			},
 
-        mapping = cmp.mapping.preset.insert({
-          -- Navigate completion menu
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
+			-- Function signature popup while typing arguments
+			signature = { enabled = true, window = { border = "rounded" } },
 
-          -- Scroll docs popup
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+			sources = {
+				default = { "lsp", "snippets", "path", "buffer" },
+			},
 
-          -- Confirm selection
-          ["<CR>"] = cmp.mapping.confirm({ select = false }), -- only confirm if you explicitly selected
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()  -- jump through snippet placeholders
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          -- Trigger completion manually
-          ["<C-Space>"] = cmp.mapping.complete(),
-
-          -- Close completion menu
-          ["<C-e>"] = cmp.mapping.abort(),
-        }),
-
-        -- Order matters — LSP suggestions appear first
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        }, {
-          { name = "buffer" },
-          { name = "path" },
-        }),
-
-        -- Show icons next to completion items
-        formatting = {
-          format = function(entry, item)
-            local source_icons = {
-              nvim_lsp = "[LSP]",
-              luasnip  = "[Snip]",
-              buffer   = "[Buf]",
-              path     = "[Path]",
-            }
-            item.menu = source_icons[entry.source.name] or ""
-            return item
-          end,
-        },
-      })
-    end,
-  },
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+	},
 }
