@@ -129,6 +129,33 @@ map("n", "<leader>gt", function()
 	vim.lsp.buf.definition()
 end, { desc = "Go to definition tab split" })
 
+--=========
+-- Reflow text to 80 columns
+-- ========
+-- gw = format motion, keeps cursor in place. Forces textwidth 80 so it
+-- also works in filetypes where textwidth isn't set. In tex buffers a
+-- structure-aware formatter runs instead: it puts \centering, \hline,
+-- \begin/\end etc. on their own lines and leaves math/tables/verbatim alone.
+local function reflow_80(visual)
+	if vim.bo.filetype == "tex" then
+		local first, last = 1, vim.fn.line("$")
+		if visual then
+			first = math.min(vim.fn.line("v"), vim.fn.line("."))
+			last = math.max(vim.fn.line("v"), vim.fn.line("."))
+			local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+			vim.api.nvim_feedkeys(esc, "n", false)
+		end
+		require("config.tex_format").format(first, last)
+		return
+	end
+	local tw = vim.bo.textwidth
+	vim.bo.textwidth = 80
+	vim.cmd("normal! " .. (visual and "gw" or "gggwG"))
+	vim.bo.textwidth = tw
+end
+map("n", "<leader>r8", function() reflow_80(false) end, { desc = "Reflow buffer to 80 cols" })
+map("v", "<leader>r8", function() reflow_80(true) end, { desc = "Reflow selection to 80 cols" })
+
 --============================================================
 -- Run the current file (writes first; output in a bottom panel)
 --   <leader>R   run     |   inside the panel: jk to exit term mode,

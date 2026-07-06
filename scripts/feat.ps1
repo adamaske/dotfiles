@@ -33,6 +33,17 @@ function feat {
     if (-not $repo) {
         Write-Host "feat: run this from inside a git repo (a treehouse-tracked one)." -ForegroundColor Yellow; return
     }
+    # Refuse to lease from inside a linked worktree: the worktree's checked-out
+    # treehouse.toml would spawn a pool nested under it, and nested pools blow
+    # past the Windows 260-char path limit (Cargo/MSVC builds fail).
+    $gitCommon = (git rev-parse --git-common-dir 2>$null) -replace '/', '\'
+    $gitDir    = (git rev-parse --git-dir 2>$null)        -replace '/', '\'
+    if ($gitCommon -and $gitDir -and $gitCommon -ne $gitDir) {
+        $main = Split-Path $gitCommon -Parent
+        Write-Host "feat: you're inside a worktree — lease from the main repo instead:" -ForegroundColor Yellow
+        Write-Host "      cd $main ; feat $Name" -ForegroundColor Yellow
+        return
+    }
 
     $branch = if ($Name -match '/') { $Name } else { "feat/$Name" }
     $label  = 'feat-' + ($branch -replace '[\\/ ]', '-')

@@ -173,6 +173,18 @@ return {
 			lazygit = {
 				enabled = true,
 			},
+			-- Inline images in markdown buffers (kitty graphics protocol).
+			-- Works in a plain WezTerm tab; herdr/psmux panes swallow the
+			-- protocol, so use markdown-preview.nvim (<leader>mp) there.
+			image = {
+				enabled = true,
+				doc = {
+					inline = true, -- render at the image link position
+					float = true, -- fallback float on cursor hover
+					max_width = 80,
+					max_height = 40,
+				},
+			},
 			-- Render the notification history as a classic bottom panel/split
 			-- instead of the default centered float. <leader>n still toggles it.
 			styles = {

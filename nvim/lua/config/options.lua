@@ -17,6 +17,18 @@ vim.api.nvim_create_autocmd("Filetype", {
 	end,
 })
 
+-- Prose: auto-wrap at 80 while typing (newline inserted at the last word
+-- that fits). fo+=t wraps text, fo-=l makes it apply to lines that were
+-- already long when insert started.
+vim.api.nvim_create_autocmd("Filetype", {
+	pattern = { "text", "markdown" },
+	callback = function()
+		vim.opt_local.textwidth = 80
+		vim.opt_local.formatoptions:append("t")
+		vim.opt_local.formatoptions:remove("l")
+	end,
+})
+
 -- Search
 opt.ignorecase = true
 opt.smartcase = true
@@ -27,6 +39,7 @@ opt.incsearch = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.cursorline = true
+opt.colorcolumn = "80"
 opt.scrolloff = 8
 opt.wrap = false
 

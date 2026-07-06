@@ -19,10 +19,13 @@ return {
 			-- -inverse-search registers the reverse jump with Sumatra: double-click
 			-- anywhere in the PDF and the running Neovim jumps to that source line
 			-- (VimtexInverseSearch finds the live nvim instance via its server pipe).
+			-- Routed through wscript + a .vbs so the headless nvim helper runs
+			-- hidden -- calling nvim directly flashed a console window per click.
+			local vbs = vim.fn.stdpath("config") .. "\\vimtex-inverse-search.vbs"
 			vim.g.vimtex_view_general_options = table.concat({
 				"-reuse-instance",
 				"-forward-search @tex @line @pdf",
-				[[-inverse-search "nvim --headless -c \"VimtexInverseSearch %l '%f'\""]],
+				('-inverse-search "wscript.exe \\"%s\\" %%l \\"%%f\\""'):format(vbs),
 			}, " ")
 
 			-- Continuous compilation (latexmk -pvc) is VimTeX's default mode:
@@ -68,12 +71,23 @@ return {
 			vim.g.vimtex_complete_enabled = 0
 		end,
 		config = function()
+			-- After inverse search (double-click in SumatraPDF -> nvim), center
+			-- the target line vertically (zv opens any fold hiding it first).
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "VimtexEventViewReverse",
+				command = "normal! zvzz",
+			})
+
 			-- conceallevel is what actually shows the pretty symbols.
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "tex",
 				callback = function()
 					vim.opt_local.conceallevel = 2
 					vim.opt_local.wrap = false -- soft wrap made vertical jumps confusing
+					-- hard-wrap prose at 80 while typing (colorcolumn marks it);
+					-- <leader>r8 reflows existing text structure-aware
+					vim.opt_local.textwidth = 80
+					vim.opt_local.formatoptions:append("t")
 					vim.opt_local.spell = true
 					vim.opt_local.spelllang = "en_us"
 				end,
