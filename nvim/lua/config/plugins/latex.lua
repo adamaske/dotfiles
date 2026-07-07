@@ -10,7 +10,8 @@ return {
 			vim.g.vimtex_compiler_method = "latexmk"
 
 			-- In-terminal live preview: we render the PDF inside a wezterm pane
-			-- with `tdf`, which auto-reloads on every rebuild. VimTeX's own
+			-- via scripts/latex-preview.ps1 (pdftoppm + chafa), which auto-reloads
+			-- on every rebuild. VimTeX's own
 			-- viewer integration is therefore unused; <leader>lv (below) opens
 			-- the tdf pane instead. SumatraPDF is still available as a fallback
 			-- GUI viewer via :VimtexView if you ever want SyncTeX forward search.
