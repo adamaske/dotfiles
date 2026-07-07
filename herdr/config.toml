@@ -44,6 +44,15 @@ type = "pane"
 command = "lazygit"
 description = "run lazygit"
 
+# tmux-style next-layout: cycle the current tab through the five tmux preset
+# layouts (even-horizontal/vertical, main-horizontal/vertical, tiled).
+# prefix+space matches tmux muscle memory. Script: ~/.config/herdr/layout-cycle.ps1
+[[keys.command]]
+key = "prefix+space"
+type = "shell"
+command = "pwsh -NoProfile -File C:/Users/adama/.config/herdr/layout-cycle.ps1"
+description = "cycle pane layout"
+
 [ui]
 show_agent_labels_on_pane_borders = true
 agent_panel_sort = "priority"

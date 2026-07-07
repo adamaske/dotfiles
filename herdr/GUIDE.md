@@ -79,6 +79,7 @@ server and runs `Herd-Init`). `herd`/`Herd-Init` live in `~/.config/herdr/herd.p
 | `prefix+x` | close pane |
 | `prefix+shift+p` | rename pane |
 | `prefix+tab` / `prefix+shift+tab` | cycle panes |
+| `prefix+space` | **your custom:** cycle tab through the 5 tmux layouts (`layout-cycle.ps1`) |
 
 ### Agents (Claude) — see §5
 | Key | Action |
@@ -275,6 +276,7 @@ Apply edits live: `prefix+shift+r` (or `herdr server reload-config`).
 |---|---|
 | `~/.config/herdr/config.toml` | herdr config (gruvbox, ctrl+a, agent/worktree/notify) |
 | `~/.config/herdr/herd.ps1` | `herd`/`Herd-Init` launchers (dot-sourced in profile) |
+| `~/.config/herdr/layout-cycle.ps1` | `prefix+space` tmux-style layout cycling (nvim twin: `<leader>sc`) |
 | `~/.config/komorebi/start-komorebi.ps1` | login autostart (herdr server + Herd-Init) |
 | `~/.config/komorebi/komorebi.ahk` | `Win+T` leader → herd, `Win+Shift+H` → herdr |
 | `~/.config/nvim/lua/config/keymaps.lua` | `pane_nav` (nvim↔herdr ctrl-hjkl) |

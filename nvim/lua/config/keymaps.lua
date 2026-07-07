@@ -113,6 +113,10 @@ map("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split Horizontal" })
 map("n", "<leader>se", "<cmd>wincmd =<CR>", { desc = "Equalize Split" })
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close Split" })
 
+-- Cycle window layout through tmux's five presets (config/layouts.lua).
+-- herdr panes get the same via prefix+space (herdr/layout-cycle.ps1).
+map("n", "<leader>sc", function() require("config.layouts").cycle() end, { desc = "Cycle window layout (tmux-style)" })
+
 -- LSP splits
 map("n", "<leader>gv", function()
 	vim.cmd("vsplit")
