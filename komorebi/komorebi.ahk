@@ -38,11 +38,9 @@ KeepKomorebiAlive() {
 #Space::Send("!{Space}")                                 ; SUPER+SPACE  launcher (rofi -> PowerToys Run)
 #r::Send("!{Space}")                                     ; SUPER+R  menu     (hyprlauncher -> PowerToys Run)
 
-; --- psmux session launcher: Win+T leader, then a mnemonic ------------------
-;   Win+T then:  d = dev   dc = .config   nw = nirwizard
-;                ce = cedanirs   ae = askeengineering
-;   ('d' alone waits ~0.6s to see whether 'c' follows for 'dc'.)
-#t::WsLeader()
+; --- Win+T -> attach herdr in a fresh WezTerm (herd ensures the server is up;
+;     workspaces are created/managed live inside herdr, no premade specs) ------
+#t::Run('wezterm-gui.exe start -- pwsh -NoExit -Command "herd"')
 
 ; Win+Shift+T -> admin (elevated) wezterm
 #+t::Run('*RunAs "C:\Program Files\WezTerm\wezterm-gui.exe"')
@@ -101,29 +99,6 @@ KeepKomorebiAlive() {
 Reload_() {
     Komorebic("reload-configuration")
     Reload()
-}
-
-; Win+T leader: capture a short mnemonic, then open a WezTerm + herdr workspace.
-WsLeader() {
-    static names := Map(
-        "d",  "dev",
-        "dc", "config",
-        "nw", "nirwizard",
-        "ce", "cedanirs",
-        "ae", "askeengineering")
-    ToolTip("  herd ▸  d · dc · nw · ce · ae")
-    ih := InputHook("L2 T1.5")
-    ih.Start()
-    ih.Wait()
-    ToolTip()
-    seq := StrLower(ih.Input)
-    name := ""
-    if names.Has(seq)
-        name := names[seq]
-    else if names.Has(SubStr(seq, 1, 1))
-        name := names[SubStr(seq, 1, 1)]
-    if (name != "")
-        Run('wezterm-gui.exe start -- pwsh -NoExit -Command "herd ' name '"')
 }
 
 ; --- Mouse: SUPER+drag to move (LMB) / resize (RMB) --------------------------

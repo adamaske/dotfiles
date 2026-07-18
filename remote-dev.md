@@ -18,7 +18,7 @@ your panes, tabs, and Claude agents alive; you SSH in from a laptop or phone ove
 | Auth | **Public-key only** | Password auth disabled. Keys in `C:\ProgramData\ssh\administrators_authorized_keys` (admin account → special file). |
 | Shell | **pwsh** | `HKLM\SOFTWARE\OpenSSH\DefaultShell` → pwsh, so SSH sessions load the profile + `herd`/`herdr`. |
 | Server | **OpenSSH `sshd`** | Service `Automatic`, listening on TCP/22. |
-| herdr | headless server | Already running at login (komorebi startup → `herdr server` + `Herd-Init`). |
+| herdr | headless server | Already running at login (komorebi startup pre-warms `herdr server`). |
 
 Host identity: Tailscale name **`slegge`**, IP **`100.105.195.41`**.
 
@@ -29,7 +29,7 @@ Host identity: Tailscale name **`slegge`**, IP **`100.105.195.41`**.
 ```bash
 ssh adama@slegge          # or: ssh adama@100.105.195.41
 herdr                     # attach the running session
-# herd <name>             # or jump straight to a workspace (dev/config/nw/ce/ae)
+# herd <label>            # or focus a live workspace by label first, then attach
 ```
 
 Phone SSH clients (Termius, Blink, etc.) work the same — detaching with
@@ -65,9 +65,9 @@ Phone SSH clients (Termius, Blink, etc.) work the same — detaching with
 | **Detach / reattach** (any device) | ✅ kept | ✅ | ✅ |
 | **Server stop / reboot** | ❌ gone | ✅ shape restored | resume only |
 
-After a reboot herdr restores the workspace *shape* (empty pwsh shells); login
-runs **`Herd-Init`** to re-issue nvim/claude/dev-server commands. There is no
-reboot-survival of running processes in either herdr or tmux.
+After a reboot herdr restores the workspace *shape* (empty pwsh shells); you
+re-issue nvim/claude/dev-server commands yourself in the restored panes. There is
+no reboot-survival of running processes in either herdr or tmux.
 
 ---
 

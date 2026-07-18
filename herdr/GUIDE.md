@@ -31,19 +31,22 @@ re-attaches to it. Detaching with `prefix+q` leaves all panes alive.
 
 ---
 
-## 2. Launching & your dev workspaces
+## 2. Launching
+
+No premade workspaces — you create and manage them live inside herdr
+(`prefix+shift+n` etc.); they persist on the server between attaches.
 
 | How | What it does |
 |---|---|
-| **`Win+Shift+H`** | Open herdr in a fresh WezTerm window (attaches the session) |
-| **`Win+T`** then `d`/`dc`/`nw`/`ce`/`ae` | Open a specific workspace: dev / config / nirwizard / cedanirs / askeengineering |
-| `herd <name>` | (in any pwsh) create-if-needed, focus, and attach that workspace |
-| `herd` | list workspaces |
-| `Herd-Init` | (re)create all 5 workspaces with their nvim+claude/dev-server layout |
-| `herdr` | attach the default session |
+| **`Win+T`** / **`Win+Shift+H`** | Open herdr in a fresh WezTerm window (attaches the session) |
+| `herd` | (in any pwsh) ensure the server is up and attach |
+| `herd <label>` | focus an existing workspace by label, then attach |
+| `herd-list` | print workspace labels |
+| `herd-close <label>` | close a workspace (kills its panes) |
+| `herdr` | attach the default session directly |
 
-Your workspaces auto-start at login (the komorebi startup script starts the herdr
-server and runs `Herd-Init`). `herd`/`Herd-Init` live in `~/.config/herdr/herd.ps1`.
+The komorebi startup script pre-warms the herdr server at login (no workspace
+creation). The `herd*` helpers live in `~/.config/herdr/herd.ps1`.
 
 ---
 
@@ -142,7 +145,7 @@ herdr watches each Claude's transcript (via the installed hook) and shows its
   toasts. `prefix+o` jumps to whatever just notified.
 
 ### Daily workflow
-1. `Win+T` → a workspace (nvim left, Claude right).
+1. `Win+T` → attach herdr, pick/create a workspace (e.g. nvim left, Claude right).
 2. Work in nvim; `ctrl+l` to hop to Claude, `ctrl+h` back.
 3. Kick off long Claude tasks across workspaces, then watch the **sidebar**
    (`prefix+b`): whoever needs you floats to the top. `prefix+alt+1` to jump there.
@@ -187,9 +190,9 @@ border state. (Optional polish — paste only if you want it.)
 | **Server restart / reboot** | ❌ gone | ✅ restored | only if `pane_history` | only via agent resume |
 
 So after a **reboot**, herdr restores your workspace *shape* (empty pwsh shells in
-the right folders) but does **not** re-run nvim/claude/pytest/tauri. That's why
-login runs **`Herd-Init`** — it re-issues those commands. `resume_agents_on_restore`
-is on, so integrated Claude panes can resume their conversation.
+the right folders) but does **not** re-run nvim/claude/etc. — you re-issue those
+commands yourself in the restored panes. `resume_agents_on_restore` is on, so
+integrated Claude panes can resume their conversation.
 
 (`pane_history` is intentionally `false` — it only repaints old text and writes
 pane contents, including secrets, to disk.)
@@ -275,12 +278,12 @@ Apply edits live: `prefix+shift+r` (or `herdr server reload-config`).
 | File | Purpose |
 |---|---|
 | `~/.config/herdr/config.toml` | herdr config (gruvbox, ctrl+a, agent/worktree/notify) |
-| `~/.config/herdr/herd.ps1` | `herd`/`Herd-Init` launchers (dot-sourced in profile) |
+| `~/.config/herdr/herd.ps1` | `herd`/`herd-list`/`herd-close` helpers (dot-sourced in profile) |
 | `~/.config/herdr/layout-cycle.ps1` | `prefix+space` tmux-style layout cycling (nvim twin: `<leader>sc`) |
-| `~/.config/komorebi/start-komorebi.ps1` | login autostart (herdr server + Herd-Init) |
-| `~/.config/komorebi/komorebi.ahk` | `Win+T` leader → herd, `Win+Shift+H` → herdr |
+| `~/.config/komorebi/start-komorebi.ps1` | login autostart (pre-warms the herdr server) |
+| `~/.config/komorebi/komorebi.ahk` | `Win+T` / `Win+Shift+H` → attach herdr |
 | `~/.config/nvim/lua/config/keymaps.lua` | `pane_nav` (nvim↔herdr ctrl-hjkl) |
 
 **Fallback to psmux** (untouched): its config and `ws`/`Start-AllWorkspaces` still
-work; revert the AHK `WsLeader` to `ws`, the nvim nav already auto-detects psmux
-(`$TMUX`), and swap `Herd-Init` back to `Start-AllWorkspaces` in start-komorebi.ps1.
+work; point the AHK `Win+T` at `ws`, the nvim nav already auto-detects psmux
+(`$TMUX`), and add `Start-AllWorkspaces` back to start-komorebi.ps1.

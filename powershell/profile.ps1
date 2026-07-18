@@ -70,7 +70,7 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # psmux dev-session launcher: provides `ws <name>`  (mirrors tmux sessions.sh)
 . "$HOME\.config\psmux\workspaces.ps1"
 
-# herdr workspace launcher (trial): provides `herd <name>`
+# herdr helpers: `herd` (attach) / `herd-list` / `herd-close` — no premade workspaces
 . "$HOME\.config\herdr\herd.ps1"
 
 # treehouse feature worktrees: provides `feat <name>` / `feat-done`

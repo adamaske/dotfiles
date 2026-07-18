@@ -35,9 +35,9 @@ if (-not (Get-Process yasb -ErrorAction SilentlyContinue)) {
     elseif (Test-Path "$env:ProgramFiles\YASB\yasb.exe") { Start-Process "$env:ProgramFiles\YASB\yasb.exe" }
 }
 
-# 4) Pre-warm herdr: start the headless server (detached) + (re)populate workspaces.
-#    On reboot herdr restores only the workspace SHAPE (empty shells in the right
-#    dirs); Herd-Init re-runs the pane commands (nvim/claude/pytest/tauri).
+# 4) Pre-warm herdr: start the headless server (detached). Workspaces are managed
+#    live in herdr itself (no premade specs); on reboot herdr restores the
+#    workspace shape and you re-run pane commands yourself as needed.
 $herdrExe = if (Get-Command herdr -ErrorAction SilentlyContinue) { 'herdr' }
             else { 'C:\Users\adama\AppData\Local\Programs\Herdr\bin\herdr.exe' }
 
@@ -51,10 +51,4 @@ if (-not $serverUp) {
     }
 }
 
-$herdScript = "$HOME\.config\herdr\herd.ps1"
-if (Test-Path $herdScript) {
-    . $herdScript
-    Herd-Init | Out-Null
-}
-
-Write-Host "komorebi + AHK hotkeys + yasb + herdr server & workspaces started."
+Write-Host "komorebi + AHK hotkeys + yasb + herdr server started."
